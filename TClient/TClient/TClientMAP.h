@@ -75,6 +75,10 @@ public:
 	VECTORDWORD m_vNEWQUESTOBJ;
 	VTOBJBASE m_vDRAWOBJ[9];
 
+	// OPT-2 : Frustum culling
+	D3DXPLANE m_frustumPlanes[6];
+	void ExtractFrustumPlanes( CTClientCAM *pCamera );
+
 	MAPOBJECT m_mapTCOLLOBJ;
 	MAPOBJECT m_mapTWATER;
 
@@ -95,8 +99,8 @@ protected:
 	int m_nTCellZ;
 
 ///////////////////////////////////////////////////////////////////
-// Load thread ³»ºÎ¿¡¼­ È£ÃâµÇ´Â ÇÔ¼öµé ÀÌ¹Ç·Î ÀÌ ÇÔ¼öµé
-// ¾È¿¡¼­´Â ³Ñ°Ü¹ÞÀº ÆÄ¶ó¸ÞÅÍ¿Í ·ÎÄÃº¯¼ö¸¸ »ç¿ëÇØ¾ß ÇÔ
+// Load thread ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ì¹Ç·ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½
+// ï¿½È¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°Ü¹ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½
 public:
 	void DoTLOADCMD_OBJ(
 		CD3DDevice *pDevice,

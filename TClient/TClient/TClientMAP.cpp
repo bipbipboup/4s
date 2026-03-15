@@ -932,7 +932,7 @@ void CTClientMAP::LoadMAPOBJ( CD3DDevice *pDevice,
 			if( fp )
 			{
 				fseek(fp, 0, SEEK_END);
-				fprintf(fp,"NPC ID - %d¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.\n", pINST->m_dwID );
+				fprintf(fp,"NPC ID - %dï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.\n", pINST->m_dwID );
 				fclose(fp);
 			}
 			return;
@@ -962,10 +962,10 @@ void CTClientMAP::LoadMAPOBJ( CD3DDevice *pDevice,
 		pINST->m_bMode = (*pTMAPNPC)[i]->m_bMode;
 		pINST->m_bCamp = (*pTMAPNPC)[i]->m_bCamp;
 
-		// ±¹°¡ID¸¦ µÎ°³·Î ³ª´« ÀÌÀ¯´Â m_bCountryID´Â Áß¸³Áö¿ª NPC°°Àº °æ¿ì
-		// ÇØ´ç ±¹°¡ID(µåÇÁ°Ö,Å©¶ô½Ã¿Â)·Î ¼¼ÆÃµÇ±â ¶§¹®¿¡ ¿ø·¡ Áß¸³Áö¿ª NPCÀÎ °æ¿ì¸¦ ¾Ë±â À§ÇØ¼­ ¿À¸®Áö³Î ±¹°¡ID¸¦ µû·Î º¸Á¸ÇÑ´Ù.
+		// ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ m_bCountryIDï¿½ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ï¿½ï¿½ NPCï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ID(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Å©ï¿½ï¿½ï¿½Ã¿ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ÃµÇ±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ï¿½ï¿½ NPCï¿½ï¿½ ï¿½ï¿½ì¸¦ ï¿½Ë±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		pINST->m_bOriginalContryID = (*pTMAPNPC)[i]->m_bCountryID;
-		pINST->m_bContryID = (*pTMAPNPC)[i]->m_bCountryID; // <- ¾ê´Â ÃßÈÄ¿¡ ÆÐÅ¶À» ÅëÇØ¼­ ´Ù½Ã º¯°æ µÉ °ÍÀÌ´Ù.
+		pINST->m_bContryID = (*pTMAPNPC)[i]->m_bCountryID; // <- ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½Å¶ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½.
 
 		pINST->InitTNPC(
 			pDevice,
@@ -2492,7 +2492,7 @@ void CTClientMAP::ResetTMINIMAPOBJ( CD3DDevice *pDevice,
 
 	vPOS *= vSCALE;
 
-	// ÈÊ³¯ Àû¿ëÇÔ.
+	// ï¿½Ê³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	//vPOS._11 = TMINIMAPOBJTEX_SIZE / TMINIMAPTEX_SIZE;
 	//vPOS._22 = 1.0f;
 	//vPOS._33 = TMINIMAPOBJTEX_SIZE / TMINIMAPTEX_SIZE;
@@ -3022,11 +3022,55 @@ LPTMAPJOINT CTClientMAP::GetTMoveJOINT( int nPosX,
 	return NULL;
 }
 
+// OPT-2 : Extraction des 6 plans du frustum depuis View*Proj (methode Gribb/Hartmann)
+// Les plans sont en world-space, normalises pour un test distance correct.
+void CTClientMAP::ExtractFrustumPlanes( CTClientCAM *pCamera )
+{
+	D3DXMATRIX vp;
+	D3DXMatrixMultiply( &vp, &pCamera->m_matView, &pCamera->m_matProjection );
+
+	// Left
+	m_frustumPlanes[0].a = vp._14 + vp._11;
+	m_frustumPlanes[0].b = vp._24 + vp._21;
+	m_frustumPlanes[0].c = vp._34 + vp._31;
+	m_frustumPlanes[0].d = vp._44 + vp._41;
+	// Right
+	m_frustumPlanes[1].a = vp._14 - vp._11;
+	m_frustumPlanes[1].b = vp._24 - vp._21;
+	m_frustumPlanes[1].c = vp._34 - vp._31;
+	m_frustumPlanes[1].d = vp._44 - vp._41;
+	// Bottom
+	m_frustumPlanes[2].a = vp._14 + vp._12;
+	m_frustumPlanes[2].b = vp._24 + vp._22;
+	m_frustumPlanes[2].c = vp._34 + vp._32;
+	m_frustumPlanes[2].d = vp._44 + vp._42;
+	// Top
+	m_frustumPlanes[3].a = vp._14 - vp._12;
+	m_frustumPlanes[3].b = vp._24 - vp._22;
+	m_frustumPlanes[3].c = vp._34 - vp._32;
+	m_frustumPlanes[3].d = vp._44 - vp._42;
+	// Near (D3D clip-space z dans [0,1])
+	m_frustumPlanes[4].a = vp._13;
+	m_frustumPlanes[4].b = vp._23;
+	m_frustumPlanes[4].c = vp._33;
+	m_frustumPlanes[4].d = vp._43;
+	// Far
+	m_frustumPlanes[5].a = vp._14 - vp._13;
+	m_frustumPlanes[5].b = vp._24 - vp._23;
+	m_frustumPlanes[5].c = vp._34 - vp._33;
+	m_frustumPlanes[5].d = vp._44 - vp._43;
+
+	for( int i = 0; i < 6; i++ )
+		D3DXPlaneNormalize( &m_frustumPlanes[i], &m_frustumPlanes[i] );
+}
+
 void CTClientMAP::ResetVisibleOBJ( CD3DDevice *pDevice,
 								   CTClientCAM *pCamera,
 								   DWORD dwTick)
 {
 	MAPTGATE::iterator itTGATE;
+
+	ExtractFrustumPlanes( pCamera );
 
 	for( WORD i=0; i<9; i++)
 		m_vDRAWOBJ[i].clear();
@@ -3187,8 +3231,21 @@ BYTE CTClientMAP::IsDrawOBJ( CTClientObjBase *pTOBJ,
 	case OT_COLLISION	: return FALSE;
 	default				:
 		if( pTOBJ->m_fCamDIST - pTOBJ->m_fSight < CTClientObjBase::m_fCamDist )
-			return TRUE;
+		{
+			// OPT-2 : Frustum culling - test sphere englobante contre les 6 plans
+			D3DXVECTOR3 vCenter(
+				pTOBJ->GetPositionX(),
+				pTOBJ->GetPositionY(),
+				pTOBJ->GetPositionZ() );
+			FLOAT fRadius = pTOBJ->m_fSight;
 
+			for( int i = 0; i < 6; i++ )
+			{
+				if( D3DXPlaneDotCoord( &m_frustumPlanes[i], &vCenter ) < -fRadius )
+					return FALSE;
+			}
+			return TRUE;
+		}
 		break;
 	}
 
