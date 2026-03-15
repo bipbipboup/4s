@@ -67,7 +67,10 @@ CTachyonObject::CTachyonObject()
 	m_dwOBJSNDFuncID(0),
 	m_dwACTSNDFuncID(0),
 	m_dwANISNDFuncID(0),
-	m_bBlend(TRUE)
+	m_bBlend(TRUE),
+	m_fActTimeLast(-1.0f),
+	m_dwBlendTickLast(0xFFFFFFFF),
+	m_fPosLastX(0.0f), m_fPosLastY(0.0f), m_fPosLastZ(0.0f)
 {
 	D3DXMatrixIdentity(&m_vPosition);
 	D3DXMatrixIdentity(&m_vWorld);
@@ -1157,14 +1160,31 @@ void CTachyonObject::ApplyMatrix( CD3DDevice *pDevice)
 
 			LPD3DXMATRIX pInit = GetMeshMatrix();
 
-			pDATA->m_pAni->GetFrameMatrix(
-				m_pBone,
-				bBlend ? m_pBlend : NULL,
-				bBlend ? m_pBlendKEY : NULL,
-				m_pPivot,
-				m_vPosition, 0,
-				pANI->m_pANI->m_fLocalTime,
-				fBlendTime);
+			// OPT-4 : skip GetFrameMatrix si animation et position inchangees
+			BYTE bNeedCompute =
+				( m_fActTime    != m_fActTimeLast    ) ||
+				( m_dwBlendTick != m_dwBlendTickLast ) ||
+				( m_vPosition._41 != m_fPosLastX     ) ||
+				( m_vPosition._42 != m_fPosLastY     ) ||
+				( m_vPosition._43 != m_fPosLastZ     );
+
+			if( bNeedCompute )
+			{
+				pDATA->m_pAni->GetFrameMatrix(
+					m_pBone,
+					bBlend ? m_pBlend : NULL,
+					bBlend ? m_pBlendKEY : NULL,
+					m_pPivot,
+					m_vPosition, 0,
+					pANI->m_pANI->m_fLocalTime,
+					fBlendTime);
+
+				m_fActTimeLast    = m_fActTime;
+				m_dwBlendTickLast = m_dwBlendTick;
+				m_fPosLastX       = m_vPosition._41;
+				m_fPosLastY       = m_vPosition._42;
+				m_fPosLastZ       = m_vPosition._43;
+			}
 
 			if(m_bUseSHADER)
 			{

@@ -242,6 +242,11 @@ public:
 	int m_nKeyBase;
 	BYTE m_bBlend;
 
+	// OPT-4 : cache pour eviter GetFrameMatrix redondant
+	FLOAT m_fActTimeLast;
+	DWORD m_dwBlendTickLast;
+	FLOAT m_fPosLastX, m_fPosLastY, m_fPosLastZ;
+
 public:
 	OBJINST m_OBJ;
 	VSTYPE m_nVS;
