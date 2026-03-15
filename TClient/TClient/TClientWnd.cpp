@@ -333,7 +333,7 @@ void CTClientWnd::OnClose( CTachyonSession *pSession, int nErrorCode)
 				pNEWSESSION->m_target = vTarget;
 				pNEWSESSION->m_bSvrID = bSvrID;
 				pNEWSESSION->m_bSVR = SVR_MAP;
-				pNEWSESSION->m_bLogicalValid = FALSE; // CS_CONNECT_ACK¸¦ ¹Þ±âÀü±îÁø ÀÌ ¼ÒÄÏÀº ¿¬°áÀº À¯È¿ÇØµµ Åë½ÅÇØ¼­´Â ¾ÈµÈ´Ù.
+				pNEWSESSION->m_bLogicalValid = FALSE; // CS_CONNECT_ACKï¿½ï¿½ ï¿½Þ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ÈµÈ´ï¿½.
 				
 				pNEWSESSION->Start(
 					inet_ntoa(pNEWSESSION->m_target.sin_addr),
@@ -421,7 +421,7 @@ void CTClientWnd::OnClose( CTachyonSession *pSession, int nErrorCode)
 					TRUE,
 					ID_SND_ERROR );
 			}
-			else if( !m_bIntendLogout ) // ³»°¡ ÀÇµµÇÑ ¼¼¼ÇÁ¾·á°¡ ¾Æ´Ñ °æ¿ì ¿¡·¯¸Þ½ÃÁö Ãâ·Â.
+			else if( !m_bIntendLogout ) // ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á°¡ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
 				OnERROR( TERR_CONNECT_FAILED );
 		}
 		else if(m_bRelogin)
@@ -835,6 +835,45 @@ void CTClientWnd::Render()
 		if(m_MainGame.m_bShowDebugInfo ||
 			m_MainGame.m_bShowFPSInfo )
 			DrawFPS( 0, 0);
+
+		// FPS permanent - a droite de la barre de vie (HP bar gauche)
+		{
+			static DWORD s_dwFpsPrevTick = ::GetTickCount();
+			static DWORD s_dwFpsCount    = 0;
+			static DWORD s_dwFpsValue    = 0;
+			static CString s_strFPS(_T(""));
+
+			DWORD dwTick = ::GetTickCount();
+			if( dwTick - s_dwFpsPrevTick > 1000 )
+			{
+				while( dwTick - s_dwFpsPrevTick > 1000 )
+					s_dwFpsPrevTick += 1000;
+				s_dwFpsValue = s_dwFpsCount;
+				s_strFPS.Format( _T("%d FPS"), s_dwFpsValue );
+				s_dwFpsCount = 0;
+			}
+			else
+				s_dwFpsCount++;
+
+			if( !s_strFPS.IsEmpty() && m_MainGame.m_vTFRAME[TFRAME_GAUGE] )
+			{
+				TComponent* pHPFrame = m_MainGame.m_vTFRAME[TFRAME_GAUGE]->FindKid( ID_FRAME_MY_GAUGE );
+				if( pHPFrame && pHPFrame->m_bVisible )
+				{
+					// Couleur selon les FPS : vert >= 60, orange >= 30, rouge < 30
+					if( s_dwFpsValue >= 60 )
+						m_FontFPS.m_dwColor = 0xFF00FF00;	// vert
+					else if( s_dwFpsValue >= 30 )
+						m_FontFPS.m_dwColor = 0xFFFF8000;	// orange
+					else
+						m_FontFPS.m_dwColor = 0xFFFF0000;	// rouge
+
+					int nFpsX = pHPFrame->m_rc.right + 2;
+					int nFpsY = pHPFrame->m_rc.top;
+					m_FontFPS.TextOut( m_Device.m_pDevice, s_strFPS, nFpsX, nFpsY );
+				}
+			}
+		}
 
 		if( IsLoading() && !m_strLOADMSG.IsEmpty() )
 		{
@@ -1583,7 +1622,7 @@ void CTClientWnd::InitResource( CString strGroupID,
 		m_MessageBox.FindFrame(dwMsgBoxID[i][1])->EnableFloat(TRUE);
 	}
 
-	// ·ÎºñUI ÃÊ±âÈ­
+	// ï¿½Îºï¿½UI ï¿½Ê±ï¿½È­
 	for(int i=0; i<TNETFRAME_COUNT; i++)
 	{
 		m_TNet.AddFrame(dwFrameID[i][1], dwFrameID[i][0]);
@@ -1696,7 +1735,7 @@ void CTClientWnd::InitResource( CString strGroupID,
 		m_MainGame.m_pResolutionBtn->m_strText = strFMT;
 	}
 
-	// ±æµåÃ¢
+	// ï¿½ï¿½ï¿½Ã¢
 	pFrmGrpBase = static_cast<CTFrameGroupBase*>(m_MainGame.m_vTFRAME[TFRAME_COMMUNITY]);
 	{
 		pDESC = m_pTParser->FindFrameTemplate(ID_FRAME_GUILDNORMAL);
@@ -1712,7 +1751,7 @@ void CTClientWnd::InitResource( CString strGroupID,
 		pFrmGrpBase->AddFrame( new CTGuildVolunteerFrame(pFrmGrpBase, pDESC, pMINIPOPUPDESC), ID_CTRLINST_TAB_GUILDADD );
 	}
 
-	// Ä¿¹Â´ÏÆ¼Ã¢
+	// Ä¿ï¿½Â´ï¿½Æ¼Ã¢
 	pFrmGrpBase = static_cast<CTFrameGroupBase*>(m_MainGame.m_vTFRAME[TFRAME_MESSENGER]);
 	{
 		pDESC = m_pTParser->FindFrameTemplate(ID_FRAME_MESSENGER_BASE);
@@ -1731,7 +1770,7 @@ void CTClientWnd::InitResource( CString strGroupID,
 		pFrmGrpBase->AddFrame( m_MainGame.m_pBlockList, ID_CTRLINST_TAB_BLOCKLIST );
 	}
 
-	// ÆíÁöÃ¢
+	// ï¿½ï¿½ï¿½ï¿½Ã¢
 	pFrmGrpBase = static_cast<CTFrameGroupBase*>(m_MainGame.m_vTFRAME[TFRAME_MAIL]);
 	{
 		pDESC = m_pTParser->FindFrameTemplate(ID_FRAME_MAILBOX_BASE);
@@ -1800,7 +1839,7 @@ void CTClientWnd::InitResource( CString strGroupID,
 	m_bRelogin = FALSE;
 
 	LoadCustomCompPos();
-	CollectResolution(); // ÇØ»óµµ ¼öÁý
+	CollectResolution(); // ï¿½Ø»ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	if( CTNationOption::MODIFY_DIRECTLOGIN )
 	{
@@ -1826,7 +1865,7 @@ void CTClientWnd::InitResource( CString strGroupID,
 		}
 	}
 
-	// °ÔÀÓ°¡µå.
+	// ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½.
 	if( CTNationOption::RUSSIA && theApp.m_pNpgl )
 		theApp.m_pNpgl->SetHwnd( GetSafeHwnd() );
 
@@ -3416,7 +3455,7 @@ void CTClientWnd::InitChart()
 	CTChart::InitTUNITLINK(_T(".\\Tcd\\TUnitLink.tcd"));
 	CTChart::InitTDESTINATION(_T(".\\Tcd\\TDest.tcd"));
 
-	// TRACETEMP ÈÄÃ³¸®
+	// TRACETEMP ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		int n = 0;
 
@@ -3443,7 +3482,7 @@ void CTClientWnd::InitChart()
 	}
 	CTachyonRes::RenderBACK( 15, 100 );
 
-	// TQUESTMAGICITEM ÈÄÃ³¸®
+	// TQUESTMAGICITEM ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		ReleaseTQuestMagicClientItem();
 
@@ -3484,7 +3523,7 @@ void CTClientWnd::InitChart()
 		}
 	}
 
-	// TMINIMAP ÈÄÃ³¸®
+	// TMINIMAP ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		CTWorldmapDlg* pWorldDlg = (CTWorldmapDlg*) m_MainGame.m_vTFRAME[TFRAME_WORLDMAP];
 
@@ -3515,7 +3554,7 @@ void CTClientWnd::InitChart()
 		}
 	}
 	
-	// TACTIONDATA ÈÄÃ³¸®
+	// TACTIONDATA ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		m_MainGame.m_pActListPopup->ClearButtons();
 
@@ -3545,7 +3584,7 @@ void CTClientWnd::InitChart()
 		}
 	}
 
-	// TSFXTEMP ÈÄÃ³¸®
+	// TSFXTEMP ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		MAPTSFXTEMP::iterator itTSFX, end;
 		itTSFX = CTChart::m_mapTSFXTEMP.begin();
@@ -3563,7 +3602,7 @@ void CTClientWnd::InitChart()
 		}
 	}
 
-	// TITEMGRADEVISUAL ÈÄÃ³¸®
+	// TITEMGRADEVISUAL ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		MAPTITEMGRADEVISUAL::iterator it, end;
 		it = CTChart::m_mapTITEMGRADEVISUAL.begin();
@@ -3587,7 +3626,7 @@ void CTClientWnd::InitChart()
 		}
 	}
 
-	// THELP ÈÄÃ³¸®
+	// THELP ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		if( !CTChart::m_mapTHELP.empty() )
 		{
@@ -3740,13 +3779,13 @@ void CTClientWnd::ReleaseChart()
 	CTChart::ReleaseTArena();
 	CTChart::ReleaseTPORTALLINK();
 
-	// TITEMTEMP ÈÄÃ³¸®
+	// TITEMTEMP ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		CTClientItem::m_mapTITEMTICK.clear();
 		CTClientItem::m_mapTITEMLOCK.clear();
 	}
 
-	// TQUESTMAGICITEM ÈÄÃ³¸®
+	// TQUESTMAGICITEM ï¿½ï¿½Ã³ï¿½ï¿½
 	{
 		ReleaseTQuestMagicClientItem();
 	}
@@ -4116,21 +4155,21 @@ BOOL CTClientWnd::MessageBox( CString strMSG,
 	switch( eOpenType )
 	{
 	default:
-	case TMSGBOXOPEN_NONE:	// ±âÁ¸¿¡ ¶° ÀÖ´Â°Ô ÀÖÀ¸¸é Áö±Ý ¿­·Á´Â ¸Þ½ÃÁö¹Ú½º´Â ±×³É ¹«½ÃÇÏÀÚ.
+	case TMSGBOXOPEN_NONE:	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		{
 			if( (IsMsgBoxVisible() || m_bModalFrame != (BYTE)(T_INVALID)) )
 				return FALSE;
 		}
 		break;
 
-	case TMSGBOXOPEN_CLOSEALL_ALREADY: // ±âÁ¸¿¡ ¿­·ÁÀÖ´ø ¸ðµç ¸Þ½ÃÁö ¹Ú½º¸¦ °­Á¦ Á¾·á ½ÃÅ°°í Áö±Ý ÀÌ ¸Þ½ÃÁö¹Ú½º¸¦ ¿¬´Ù.
+	case TMSGBOXOPEN_CLOSEALL_ALREADY: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		{
 			ClearMessageBox();
 			ClearMsgBoxStackForced();
 		}
 		break;
 
-	case TMSGBOXOPEN_OVERLAP: // ±âÁ¸ °Í¿¡ µ¤¾î¼­ À§¿¡ Áö±Ý ÀÌ ¸Þ½ÃÁö¹Ú½º¸¦ ¿¬´Ù.
+	case TMSGBOXOPEN_OVERLAP: // ï¿½ï¿½ï¿½ï¿½ ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		{
 			ClearMessageBox();
 		}
@@ -6163,7 +6202,7 @@ LRESULT CTClientWnd::DefWindowProc( UINT message, WPARAM wParam, LPARAM lParam)
 }
 
 #ifdef TEST_MODE
-// TEST ¿ë Ã¤ÆÃ ¸í·É¾î
+// TEST ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½É¾ï¿½
 // ------------------------------------------------------------------------------------------
 CString _on_chatcmd_fps(const CString& strCMD, const VECTORSTRING& vPARAM, DWORD dwUSER)
 {
@@ -6290,7 +6329,7 @@ CString _on_chatcmd_test(const CString& strCMD, const VECTORSTRING& vPARAM, DWOR
 {
 	CTClientGame* pTGAME = (CTClientGame*) dwUSER;
 	LPTASSISTANT pNew = new TASSISTANT;
-	pNew->m_strName = "¶Ê¶ÊÀÌ";
+	pNew->m_strName = "ï¿½Ê¶ï¿½ï¿½ï¿½";
 	pNew->m_dwCharID = 123;
 	pNew->m_dwCommanderID = 123;
 	pNew->m_bDie = TRUE;
@@ -6299,7 +6338,7 @@ CString _on_chatcmd_test(const CString& strCMD, const VECTORSTRING& vPARAM, DWOR
 	pNew->m_bHair = 2;
 	pTGAME->m_vTASSISTANT.push_back( pNew );
 	pNew = new TASSISTANT;
-	pNew->m_strName = "¸ÛÃæÀÌ";
+	pNew->m_strName = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 	pNew->m_dwCharID = 123;
 	pNew->m_dwCommanderID = 0;
 	pNew->m_bDie = TRUE;
@@ -6308,7 +6347,7 @@ CString _on_chatcmd_test(const CString& strCMD, const VECTORSTRING& vPARAM, DWOR
 	pNew->m_bHair = 0;
 	pTGAME->m_vTASSISTANT.push_back( pNew );
 	pNew = new TASSISTANT;
-	pNew->m_strName = "°³¹ÚÀÌ";
+	pNew->m_strName = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 	pNew->m_dwCharID = 123;
 	pNew->m_dwCommanderID = 0;
 	pNew->m_bDie = FALSE;
@@ -6404,27 +6443,27 @@ void CTClientWnd::InitChatProc()
 #ifdef TEST_MODE
 	CTChatFrame* pChat = m_MainGame.m_pChatFrame;
 
-	// fps : ÇÁ·¹ÀÓ,À§Ä¡ Á¤º¸ º¸±â
+	// fps : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	pChat->AddChatCmdProc("fps", _on_chatcmd_fps, (DWORD)(&m_MainGame));
 
 	pChat->AddChatCmdProc("f", _on_chatcmd_f, (DWORD)(&m_MainGame));
 
-	// mon_roaming_off : ¸ó½ºÅÍ ·Î¹Ö ²û
+	// mon_roaming_off : ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ ï¿½ï¿½
 	pChat->AddChatCmdProc("mon_roaming_off", _on_chatcmd_mon_roaming_off, (DWORD)(&m_MainGame));
 
-	// mon_roaming_on : ¸ó½ºÅÍ ·Î¹Ö ÄÔ
+	// mon_roaming_on : ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ ï¿½ï¿½
 	pChat->AddChatCmdProc("mon_roaming_on", _on_chatcmd_mon_roaming_on, (DWORD)(&m_MainGame));
 
-	// draw_object : ¿ÀºêÁ§Æ® ·»´õ¸µ ¿©ºÎ
+	// draw_object : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	pChat->AddChatCmdProc("draw_object", _on_chatcmd_draw_object, (DWORD)(&m_MainGame));
 
-	// spawn_edit_start : ½ºÆù ¿¡µðÆ® ½ÃÀÛ
+	// spawn_edit_start : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	pChat->AddChatCmdProc("spawn_edit_start", _on_chatcmd_spawn_edit_start, (DWORD)(&m_MainGame));
 
-	// spawn_edit_end : ½ºÆù ¿¡µðÆ® Á¾·á
+	// spawn_edit_end : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	pChat->AddChatCmdProc("spawn_edit_end", _on_chatcmd_spawn_edit_end, (DWORD)(&m_MainGame));
 
-	// spawn_edit_save : ½ºÆù ¿¡µðÆ® ÀúÀå
+	// spawn_edit_save : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	pChat->AddChatCmdProc("spawn_edit_save", _on_chatcmd_spawn_edit_save, (DWORD)(&m_MainGame));
 
 	pChat->AddChatCmdProc( "rm", _on_chatcmd_rm, (DWORD)(&m_MainGame) );
