@@ -114,7 +114,7 @@ void TComponent::TextLine::MakeDotLine( LPDIRECT3DDEVICE9 pDevice, INT StartX, I
 		D3DXVECTOR2 vCur = vStart;
 		for( INT i=0 ; i < nCount ; ++i )
 		{
-			//vCur¿¡¼­ºÎÅÍ vCur+vDot±îÁö ¼±
+			//vCurï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ vCur+vDotï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			D3DXVECTOR2 vDotEnd = vCur + vDot;
 
 			TNLPOINT pt;
@@ -133,11 +133,11 @@ void TComponent::TextLine::MakeDotLine( LPDIRECT3DDEVICE9 pDevice, INT StartX, I
 			vCur += (vDot+vSpace);
 		}
 
-		// vCur°¡ vEnd¿Í °°Áö ¾Ê°í
+		// vCurï¿½ï¿½ vEndï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½
 		if( fabsf( vCur.x > vEnd.x ? vCur.x-vEnd.x : vEnd.x-vCur.x ) > 0.0001f ||
 			fabsf( vCur.y > vEnd.y ? vCur.y-vEnd.y : vEnd.y-vCur.y ) )
 		{
-			// vCur°¡ vEnd¸¦ ³Ñ¾î°¡Áö ¾Ê¾Ò´Ù¸é ³ª¸ÓÁö °ø°£µµ ±×·ÁÁØ´Ù.	
+			// vCurï¿½ï¿½ vEndï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½Ê¾Ò´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½Ø´ï¿½.	
 			D3DXVECTOR2 vDir1, vDir2;
 			D3DXVec2Normalize( &vDir1, &(vCur-vStart));
 			D3DXVec2Normalize( &vDir2, &(vEnd-vCur));
@@ -371,7 +371,7 @@ void TComponent::BuildMe( LP_FRAMEDESC pDesc )
 void TComponent::BuildFont( LP_FRAMEDESC pDesc )
 {
 	//Font
-	//ÁöÁ¤ÇÑ ÆùÆ®°¡ ¾ø´Ù¸é ºÎ¸ðÀÇ ÆùÆ®¸¦ »ó¼Ó ¹Þ´Â´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½Î¸ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Þ´Â´ï¿½.
 	CGDIFont *pTipFont = FindFont(pDesc->m_vCOMP.m_dwTooltipID);
 	CGDIFont *pFont = FindFont(pDesc->m_vCOMP.m_dwFontID);
 
@@ -859,7 +859,7 @@ HRESULT TComponent::DrawText()
 
 		SeparateTextFitSize( m_strText, szCTRL, m_vTextLine );
 
-		m_bDidShrink = FALSE; // ¹Ø¿¡ UpdateTextOutputData¿¡¼­ m_bDidShrinkÀÇ TRUE¸¦ ´Ù½Ã °áÁ¤ÇÑ´Ù.
+		m_bDidShrink = FALSE; // ï¿½Ø¿ï¿½ UpdateTextOutputDataï¿½ï¿½ï¿½ï¿½ m_bDidShrinkï¿½ï¿½ TRUEï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	}
 
 	if( m_bNeedUpdateTextSetting || m_PrvFlagAlign != m_flagAlign || m_rcPrv != m_rc )
@@ -1258,7 +1258,7 @@ void TComponent::ShrinkText( CString& text)
 		}
 	}
 
-	m_bDidShrink = TRUE; // ±ÛÀÚ°¡ Â©¸®¸é ¸¶¿ì½ºÄ¿¼­¸¦ ¿Ã·Á³ùÀ»¶§ Ç®ÅØ½ºÆ®°¡ ³ª¿À´Â ±â´ÉÀ» È°¼ºÈ­½ÃÅ´
+	m_bDidShrink = TRUE; // ï¿½ï¿½ï¿½Ú°ï¿½ Â©ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½ºÄ¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ï¿½ï¿½Å´
 }
 
 DWORD TComponent::GetID()
@@ -1535,7 +1535,7 @@ void TComponent::RemoveTextSetting(INT iStart, INT iEnd)
 	TextSettingSet::iterator itr = m_TextSettingSet.begin();
 	while( itr != m_TextSettingSet.end() )
 	{
-		TextSetting& data = *itr;
+		const const TextSetting& data = *itr;
 
 		if( (data.iStart > iEnd) || (data.iEnd < iStart) )
 		{
@@ -1553,14 +1553,14 @@ void TComponent::RemoveTextSetting(INT iStart, INT iEnd)
 			}
 			else
 			{
-				data.iEnd = iStart - 1;
+				const_cast<TextSetting&>(data).iEnd = iStart - 1;
 			}
 		}
 		else 
 		{
 			if( iEnd < data.iEnd )
 			{
-				data.iStart = iEnd + 1;
+				const_cast<TextSetting&>(data).iStart = iEnd + 1;
 			}
 			else
 			{
@@ -1611,7 +1611,7 @@ BOOL TComponent::FindTextSetting(INT iIndex, TextSetting& outSetting)
 
 	for( ; itr != end; ++itr )
 	{
-		const TextSetting& data = *itr;
+		const const const TextSetting& data = *itr;
 		
 		if( data.iStart > iIndex )
 			break;
@@ -1765,8 +1765,8 @@ void TComponent::ClearTextOutputData()
 
 VOID TComponent::SeparateTextFitSize( CString& strORG, CSize szCTRL, VECTORSTRING& outRESULT, BOOL bAcc )
 {
-	// ¹®´Ü³ª´®('\n')°ú szCTRL.cy ±æÀÌ¿¡ ¸Â°Ô strORG ¹®ÀÚ¸¦ Àß¶ó¼­
-	// Ã¹ÁÙºÎÅÍ ¸¶Áö¸·ÁÙ±îÁö outResult¿¡ ¼ø¼­´ë·Î ´ã´Â´Ù.
+	// ï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½('\n')ï¿½ï¿½ szCTRL.cy ï¿½ï¿½ï¿½Ì¿ï¿½ ï¿½Â°ï¿½ strORG ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ß¶ï¿½
+	// Ã¹ï¿½Ùºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ outResultï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â´ï¿½.
 
 	if( !bAcc )
 		outRESULT.clear();
@@ -1796,13 +1796,13 @@ VOID TComponent::SeparateTextFitSize( CString& strORG, CSize szCTRL, VECTORSTRIN
 					{
 						if( !strWORD.IsEmpty() )
 						{
-							// ½ÃÇè¿¡ µé°Ô ÇÏÀÚ.
+							// ï¿½ï¿½ï¿½è¿¡ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 							CString strTEST(strLINE);
 							strTEST.Append( strWORD );
 							GetTextExtentPoint( strTEST, szSIZE );
 							if( szSIZE.cx > szCTRL.cx )
 							{
-								// ÀÌ ´Ü¾î¸¦ Æ÷ÇÔÇÒ¼ø¾ø´Ù.
+								// ï¿½ï¿½ ï¿½Ü¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½.
 								strWORD.Append( strLEFT );
 								strLEFT = strWORD;
 								strWORD.Empty();
@@ -1847,7 +1847,7 @@ VOID TComponent::SeparateTextFitSize( CString& strORG, CSize szCTRL, VECTORSTRIN
 						CSize sizeWORD;
 						GetTextExtentPoint( strWORD, sizeWORD);
 
-						if( sizeWORD.cx > szCTRL.cx ) // ÇÑ ´Ü¾î ±æÀÌ°¡ ÄÄÆ÷³ÍÆ®ÀÇ °¡·Î±æÀÌº¸´Ù ±æ´Ù. ÀÌ·²¶© ¹«Á¶°Ç ÀÚ¸£±â.
+						if( sizeWORD.cx > szCTRL.cx ) // ï¿½ï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½. ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½.
 						{
 							CSize sizeLINE;
 
@@ -1874,7 +1874,7 @@ VOID TComponent::SeparateTextFitSize( CString& strORG, CSize szCTRL, VECTORSTRIN
 									break;
 							}
 
-							// strNewWord¸¸ strLINE¿¡ Æ÷ÇÔ, ³ª¸ÓÁø strLEFT·Î µÇµ¹¾Æ°¨.
+							// strNewWordï¿½ï¿½ strLINEï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ strLEFTï¿½ï¿½ ï¿½Çµï¿½ï¿½Æ°ï¿½.
 							strWORD = strWORD.Right( strWORD.GetLength() - strNewWord.GetLength() );
 							strWORD.Append( strLEFT );
 							strLEFT = strWORD;
@@ -1888,13 +1888,13 @@ VOID TComponent::SeparateTextFitSize( CString& strORG, CSize szCTRL, VECTORSTRIN
 
 				if( !strWORD.IsEmpty() )
 				{
-					// ½ÃÇè¿¡ µé°Ô ÇÏÀÚ.
+					// ï¿½ï¿½ï¿½è¿¡ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 					CString strTEST(strLINE);
 					strTEST.Append( strWORD );
 					GetTextExtentPoint( strTEST, szSIZE );
 					if( szSIZE.cx > szCTRL.cx )
 					{
-						// ÀÌ ´Ü¾î¸¦ Æ÷ÇÔÇÒ¼ø¾ø´Ù.
+						// ï¿½ï¿½ ï¿½Ü¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½.
 						strWORD.Append( strLEFT );
 						strLEFT = strWORD;
 						strWORD.Empty();
@@ -1933,7 +1933,7 @@ VOID TComponent::SeparateTextFitSize( CString& strORG, CSize szCTRL, VECTORSTRIN
 				CString strMBCS = BuildMBCSInfo(strTEXT);
 				strFORMAT = strTEXT;
 
-				while( szTEXT.cx > szCTRL.cx ) // ±ÛÀÚ¸¦ ÇÑ°³¾¿ »©¸é¼­ szCTRL.cy ¾È¿¡ µé¾î°¥ ¶§±îÁö ÀÚ¸¥´Ù.
+				while( szTEXT.cx > szCTRL.cx ) // ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½é¼­ szCTRL.cy ï¿½È¿ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½.
 				{
 					int nLength = strFORMAT.GetLength() - 1;
 
@@ -1971,11 +1971,11 @@ VOID TComponent::UpdateTextOutputData( VECTORSTRING& vTextLine, const CSize szCT
 		CSize szTEXT;
 		GetTextExtentPoint(vTextLine.back(), szTEXT);
 
-		int nLINE = INT(min( szCTRL.cy, szTEXT.cy) * 1.2f);			// ÇÑ ÁÙÀÇ ³ôÀÌ(ÇÈ¼¿)
-		int nTEXT = INT(vTextLine.size());							// Ãâ·ÂÇØ¾ßµÉ ÀüÃ¼ ¶óÀÎ¼ö
+		int nLINE = INT(min( szCTRL.cy, szTEXT.cy) * 1.2f);			// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½È¼ï¿½)
+		int nTEXT = INT(vTextLine.size());							// ï¿½ï¿½ï¿½ï¿½Ø¾ßµï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½Î¼ï¿½
 		nLINE = min( szCTRL.cy, nLINE);
 
-		int nSLOT = min(szCTRL.cy/nLINE, nTEXT);					// Ãâ·ÂÇÒ ¼ö ÀÖ´Â ÃÖÁ¾ ¶óÀÎ¼ö
+		int nSLOT = min(szCTRL.cy/nLINE, nTEXT);					// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¼ï¿½
 		int nSIZE = m_rc.top + m_nVMargine + (nLINE - szTEXT.cy) / 2 + (m_bVCenter ? (szCTRL.cy - nSLOT * nLINE) / 2 : 0);
 
 		if( m_bShrink && nTEXT > nSLOT && nSLOT > 0 )
@@ -2020,7 +2020,7 @@ VOID TComponent::UpdateTextOutputData( VECTORSTRING& vTextLine, const CSize szCT
 
 			while( itr != end )
 			{
-				const TextSetting& data = *itr;
+				const const const TextSetting& data = *itr;
 				if( data.iStart > iEND )
 					break;
 

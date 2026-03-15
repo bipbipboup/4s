@@ -3744,6 +3744,12 @@ HRESULT CTWorldSvrModule::PreMessageLoop( int nShowCmd)
 	}
 	m_dwThreadID = GetCurrentThreadId();
 
+	if (m_bService)
+	{
+		SetServiceStatus(SERVICE_RUNNING);
+		return S_OK;
+	}
+
 	return CAtlServiceModuleT<CTWorldSvrModule,IDS_SERVICENAME>::PreMessageLoop(nShowCmd);
 }
 

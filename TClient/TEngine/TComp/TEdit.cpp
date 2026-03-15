@@ -688,7 +688,7 @@ void TEdit::OnImeComposition(HWND hWnd, WPARAM wParam, LPARAM lParam)
 
 		if( bAttr == ATTR_TARGET_CONVERTED || bAttr == ATTR_TARGET_NOTCONVERTED )
 		{
-			// nCurPos¿¡¼­ nCurPos+nCharLength-1 ±îÁö Å¸°Ù¹®ÀÚ¿­ÀÌ´Ù. ÀÌ°ÍÀÌ È­¸é¿¡ º¸ÀÌµµ·Ï nCaretÀ» Á¶Á¤ÇØ¾ßµÈ´Ù.
+			// nCurPosï¿½ï¿½ï¿½ï¿½ nCurPos+nCharLength-1 ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ù¹ï¿½ï¿½Ú¿ï¿½ï¿½Ì´ï¿½. ï¿½Ì°ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ nCaretï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ßµÈ´ï¿½.
 			INT nTargetCompOffsetStart = nCurPos;
 			INT nTargetCompOffsetEnd = nCurPos+nCharLength;
 
@@ -762,7 +762,7 @@ void TEdit::OnImeNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
 
 						LPCANDIDATELIST pCandiList = (LPCANDIDATELIST) pBuf;
 
-						// ÀÏ¾îIME ¹ö±×. ImmGetCandidateListWÇÔ¼ö¿¡¼­ ³ª¿Â °ÍÀÓ¿¡µµ ºÒ±¸ÇÏ°í pCandi->dwPageStart°¡ Àß¸ø³ª¿Â´Ù.
+						// ï¿½Ï¾ï¿½IME ï¿½ï¿½ï¿½ï¿½. ImmGetCandidateListWï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½Ò±ï¿½ï¿½Ï°ï¿½ pCandi->dwPageStartï¿½ï¿½ ï¿½ß¸ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 						DWORD dwRealStart = (pCandiList->dwSelection / pCandiList->dwPageSize) * pCandiList->dwPageSize;
 						if(pCandiList->dwPageStart != dwRealStart)
 						{
@@ -828,11 +828,11 @@ void TEdit::OnImeNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
 				{
 					if( m_strText.IsEmpty() && m_strComposition.IsEmpty() )
 					{
-						// º¯°æÇã¿ë
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					}
 					else
 					{
-						// º¯°æºÒÇã - ´Ù½Ã ¿øÀÔ·Â»óÅÂ·Î µÇµ¹¾Æ°¨.
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Ô·Â»ï¿½ï¿½Â·ï¿½ ï¿½Çµï¿½ï¿½Æ°ï¿½.
 						TEdit::g_bPassImeNotify = TRUE;
 
 						DWORD dwConv, dwSent, dwTemp;
@@ -1060,8 +1060,8 @@ void TEdit::MoveTextSetting(INT iFrom, INT iCount)
 
 	for( ; itr!=end; ++itr )
 	{
-		itr->iStart += iCount;
-		itr->iEnd += iCount;
+		const_cast<TextSetting&>(*itr).iStart += iCount;
+		const_cast<TextSetting&>(*itr).iEnd += iCount;
 	}
 }
 
@@ -1069,14 +1069,14 @@ INT GetAttrToType( BYTE bType )
 {
 	switch( bType )
 	{
-		case ATTR_INPUT: // Á¡¼±
+		case ATTR_INPUT: // ï¿½ï¿½ï¿½ï¿½
 			return TTEXTSETTINGTYPE_LINE_DOT;
 
-		case ATTR_TARGET_CONVERTED: // µÎ²¨¿î ½Ç¼±
+		case ATTR_TARGET_CONVERTED: // ï¿½Î²ï¿½ï¿½ï¿½ ï¿½Ç¼ï¿½
 		case ATTR_TARGET_NOTCONVERTED:
 			return TTEXTSETTINGTYPE_LINE_THICK;
 
-		case ATTR_CONVERTED: // ½Ç¼±
+		case ATTR_CONVERTED: // ï¿½Ç¼ï¿½
 		case ATTR_INPUT_ERROR:
 		case ATTR_FIXEDCONVERTED:
 			return TTEXTSETTINGTYPE_LINE;
@@ -1101,7 +1101,7 @@ void TEdit::ResetCompTextSetting(
 			BYTE bAttr = m_pCompAttr[ m_pCompClause[i-1] ];
 			INT nCharLength = m_pCompClause[i] - m_pCompClause[i-1];
 
-			// ¹®ÀÚ¿­ÀÇ szComp+dwPrevPos¿¡¼­ nCharLength¸¸Å­ ÇØ´çÀÌ´Ù.
+			// ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ szComp+dwPrevPosï¿½ï¿½ï¿½ï¿½ nCharLengthï¿½ï¿½Å­ ï¿½Ø´ï¿½ï¿½Ì´ï¿½.
 
 			AddTextSetting(
 				nCurPos,
@@ -1120,7 +1120,7 @@ void TEdit::ResetTextSettingLine(
 								 const CRect& rectScreenText,
 								 TextOutputData& sTextOutputData)
 {
-	// ¹ØÁÙ ±×¸®±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
 	if( (data.iType&TTEXTSETTINGTYPE_LINE) == TTEXTSETTINGTYPE_LINE ||
 		(data.iType&TTEXTSETTINGTYPE_LINE_THICK) == TTEXTSETTINGTYPE_LINE_THICK ||
 		(data.iType&TTEXTSETTINGTYPE_LINE_DOT) == TTEXTSETTINGTYPE_LINE_DOT )
@@ -1666,7 +1666,7 @@ BOOL TEdit::CheckCountryCharCode(  TCHAR chCharCode  )
 
 		return FALSE;
 	}
-	else	// ÀÏº», ÇÑ±¹, µ¶ÀÏ
+	else	// ï¿½Ïºï¿½, ï¿½Ñ±ï¿½, ï¿½ï¿½ï¿½ï¿½
 	{
 		if( (chCharCode == ' ') ||
 			(chCharCode >=33 && chCharCode <=126) ||

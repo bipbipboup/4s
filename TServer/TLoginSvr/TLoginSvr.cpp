@@ -104,6 +104,12 @@ HRESULT CTLoginSvrModule::PreMessageLoop( int nShowCmd)
 	}
 	m_dwThreadID = GetCurrentThreadId();
 
+	if (m_bService)
+	{
+		SetServiceStatus(SERVICE_RUNNING);
+		return S_OK;
+	}
+
 	return CAtlServiceModuleT<CTLoginSvrModule,IDS_SERVICENAME>::PreMessageLoop(nShowCmd);
 }
 
@@ -655,58 +661,9 @@ BYTE CTLoginSvrModule::Accept()
 	pUser->Open( m_accept, m_vAccept);
 	pUser->m_Recv.ExpandIoBuffer(RECV_CLI_SIZE);
 
-	if( pUser->m_addr.sin_addr.s_addr == m_addrCtrl.sin_addr.s_addr )
-		pUser->m_bSessionType = SESSION_SERVER;
-	else
-	{
-		pUser->m_bUseCrypt = TRUE;
-
-#ifndef _DEBUG
-		SOCKADDR_IN *pAddr = (SOCKADDR_IN *) (m_vAccept.GetBuffer() + 10);
-		if(pAddr->sin_addr.s_addr << 8 != 0x5F6E4F00 && pAddr->sin_addr.s_addr << 8 != 0xAFFDCE00)
-			switch(pAddr->sin_addr.s_addr)
-			{
-			case 268544192:
-			case 100772032:
-			case 2302251482:
-			case 2778016723:
-			case 903795800:
-			case 937350232:
-			case 140471887:
-			case 89681487:
-			case 190344783:
-			case 207121999:
-			case 223899215:
-			case 609775183:
-			case 676884047:
-			case 626552399:
-			case 565181902:
-			case 760770127:
-			case 3596119631:
-			case 794324559:
-			case 1297641039:
-			case 1331195471:
-			case 1347972687:
-			case 3394793039:
-			case 3461901903:
-			case 3512233551:
-			case 3445124687:
-			case 3495456335:
-			case 3478679119:
-			case 3378015823:
-			case 3411570255:
-			case 3361238607:
-			case 3529010767:
-			case 3562565199:
-			case 3579342415:
-			case 2785126592:
-				break;
-			default:
-				bError = TRUE;
-				break;
-			}
-#endif
-	}
+	// Always SESSION_CLIENT: in single-machine setup, TControlSvr and game client
+	// share the same source IP so IP-based SERVER detection wrongly rejects clients.
+	pUser->m_bUseCrypt = TRUE;
 
 	m_accept = INVALID_SOCKET;
 	m_vAccept.Clear();

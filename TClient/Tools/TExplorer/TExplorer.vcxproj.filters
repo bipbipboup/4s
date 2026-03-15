@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TCMDHandler.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerBSP.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerCAM.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerChar.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerFlag.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerGM.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerInven.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerItem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerKEY.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerMAP.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerMoveObj.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerNpc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerObjBase.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerSFX.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TExplorerWnd.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TMinimapDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TWorldmapDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TErrorCode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerBSP.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerCAM.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerChar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerCMD.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerFlag.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerGame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerInven.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerItem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerKEY.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerMAP.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerMoveObj.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerNpc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerObjBase.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerSFX.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TExplorerWnd.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TMinimapDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TWorldmapDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Path_flag.tmf">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\TExplorer.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\PS_ADD.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_ADDSIGNED.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_ADDSIGNED2X.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_ADDSMOOTH.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDCURRENTALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDDIFFUSEALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDFACTORALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHAPM.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_DETAILMAP.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_DOTPRODUCT3.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_LERP.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MAP.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATE.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATE2X.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATE4X.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATEALPHA_ADDCOLOR.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATECOLOR_ADDALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATEINVALPHA_ADDCOLOR.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATEINVCOLOR_ADDALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MULTIPLYADD.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_SHADER.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_STAGE1.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_SUBTRACT.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\VS_LVERTEX.vsh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\VS_MESH.vsh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\VS_WMESH.vsh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\TExplorer.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\TExplorerDoc.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TExplorer.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\TExplorer.manifest" />
+  </ItemGroup>
+</Project>

@@ -40,7 +40,7 @@ SOCKET			g_sock;
 
 CTMiniDump::CTMiniDump()
 {
-	// ¿¹¿Ü°¡ ¹ß»ýÇÏ¸é ÀÎÅÍ·¦ÅÍ
+	// ï¿½ï¿½ï¿½Ü°ï¿½ ï¿½ß»ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½
 	::SetUnhandledExceptionFilter(TopLevelExceptionFilter);
 }
 
@@ -111,7 +111,7 @@ BOOL CALLBACK ErrorDlgProc(HWND hDlg,UINT iMessage,WPARAM wParam,LPARAM lParam)
 	return FALSE;
 }
 
-BOOL CALLBACK EnumerateLoadedModulesProc(PSTR ModuleName, ULONG ModuleBase, ULONG ModuleSize, PVOID UserContext)
+BOOL CALLBACK EnumerateLoadedModulesProc(PCSTR ModuleName, ULONG ModuleBase, ULONG ModuleSize, PVOID UserContext)
 {
 	DWORD offset = *((DWORD*)UserContext);
 
@@ -161,7 +161,7 @@ LONG WINAPI CTMiniDump::TopLevelExceptionFilter(_EXCEPTION_POINTERS *pException)
 		return EXCEPTION_EXECUTE_HANDLER;
 	}
 
-	// ÀúÀåÇÒ ÆÄÀÏ ÀÌ¸§ ¼³Á¤
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	char szFilename[MAX_PATH];
 	::GetModuleFileName(NULL, szFilename, MAX_PATH);
 	CString strFileName = szFilename;
@@ -173,7 +173,7 @@ LONG WINAPI CTMiniDump::TopLevelExceptionFilter(_EXCEPTION_POINTERS *pException)
 	strFileName += "(" + strTime + ")" + ".dmp";
 
 #ifdef MODIFY_ADD_MINIDUMP_FILE
-	// ÆÄÀÏ¿¡ ±â·Ï
+	// ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½
 	HANDLE hFile = CreateFile(strFileName, GENERIC_READ|GENERIC_WRITE, 0, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	if( INVALID_HANDLE_VALUE == hFile )
 		return lResult;
@@ -192,7 +192,7 @@ LONG WINAPI CTMiniDump::TopLevelExceptionFilter(_EXCEPTION_POINTERS *pException)
 
 	CString strFaultReason = GetFaultReason(pException);
 
-	// Ãß°¡Á¤º¸
+	// ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½
 	m_vUseData[0].Type = 0;
 	m_vUseData[0].Buffer = (PVOID)((LPCSTR)strFaultReason);
 	m_vUseData[0].BufferSize = strFaultReason.GetLength()+1;
@@ -204,7 +204,7 @@ LONG WINAPI CTMiniDump::TopLevelExceptionFilter(_EXCEPTION_POINTERS *pException)
 	sUserInfo.UserStreamCount = 2; 
 	sUserInfo.UserStreamArray = m_vUseData;
 
-	// Á¤º¸±â·Ï
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if( MiniDumpWriteDump( hProcess, dwProcessID, hFile, g_eDumpType, &sExceptionInfo, &sUserInfo, NULL) )
 		lResult = EXCEPTION_EXECUTE_HANDLER;
 	
@@ -560,33 +560,33 @@ char* CTMiniDump::GetFaultReason(_EXCEPTION_POINTERS* pExPtrs)
 	if (::IsBadReadPtr(pExPtrs, sizeof(EXCEPTION_POINTERS))) 
 		return "BAD EXCEPTION POINTERS";
 
-	// °£´ÜÇÑ ¿¡·¯ ÄÚµå¶ó¸é ±×³É º¯È¯ÇÒ ¼ö ÀÖ´Ù.
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
 	//http://msdn.microsoft.com/library/default.asp?url=/library/en-us/debug/base/exception_record_str.asp
 	switch( pExPtrs->ExceptionRecord->ExceptionCode )
 	{
-	case EXCEPTION_ACCESS_VIOLATION:         return "EXCEPTION_ACCESS_VIOLATION";		// Àß¸øµÈ ÂüÁ¶
-	case EXCEPTION_DATATYPE_MISALIGNMENT:    return "EXCEPTION_DATATYPE_MISALIGNMENT";  // Á¤·ÄµÇÁö¾ÊÀº µ¥ÀÌÅ¸Á¢±Ù
-	case EXCEPTION_BREAKPOINT:               return "EXCEPTION_BREAKPOINT";				// ºê·¹ÀÌÅ©Æ÷ÀÎÆ®¿¡ °É·ÈÀ»¶§
-	case EXCEPTION_SINGLE_STEP:              return "EXCEPTION_SINGLE_STEP";			// ÇÏ³ªÀÇ ¸í·É¾î¸¦ ½ÇÇàÇÒ¶§
-	case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:    return "EXCEPTION_ARRAY_BOUNDS_EXCEEDED";	// ¹è¿­ÀÌ ³Ñ¾îÁ¢±Ù
-	case EXCEPTION_FLT_DENORMAL_OPERAND:     return "EXCEPTION_FLT_DENORMAL_OPERAND";	// Á¤±ÔÈ­°¡ µÇÁö¾Ê´Â ÀÛÀº°ª
-	case EXCEPTION_FLT_DIVIDE_BY_ZERO:       return "EXCEPTION_FLT_DIVIDE_BY_ZERO";		// float 0À¸·Î³ª´®
-	case EXCEPTION_FLT_INEXACT_RESULT:       return "EXCEPTION_FLT_INEXACT_RESULT";		// ¼Ò¼ö¸¦ Á¤È®ÇÏ°Ô ³ªÅ¸³¾¼ö¾øÀ½
-	case EXCEPTION_FLT_INVALID_OPERATION:    return "EXCEPTION_FLT_INVALID_OPERATION";	// ±âÅ¸¿¹¿Ü
-	case EXCEPTION_FLT_OVERFLOW:             return "EXCEPTION_FLT_OVERFLOW";			// float¿À¹öÇÃ·Î¿ì
-	case EXCEPTION_FLT_STACK_CHECK:          return "EXCEPTION_FLT_STACK_CHECK";		// ½ºÅÃ¿¡°ªÀÌ ³ÑÄ¡°Å³ª ³Ê¹«ÀÛÀ»°æ¿ì
-	case EXCEPTION_FLT_UNDERFLOW:            return "EXCEPTION_FLT_UNDERFLOW";			// °ªÀÌ ÀÛÀ»¶§
-	case EXCEPTION_INT_DIVIDE_BY_ZERO:       return "EXCEPTION_INT_DIVIDE_BY_ZERO";		// int¸¦ 0À¸·Î ³ª´®
-	case EXCEPTION_INT_OVERFLOW:             return "EXCEPTION_INT_OVERFLOW";			// int¿À¹öÇÃ·Î¿ì
-	case EXCEPTION_PRIV_INSTRUCTION:         return "EXCEPTION_PRIV_INSTRUCTION";		// ¸í·É¾î¸¦ ½ÇÇà ÇÒ ¼ö ¾øÀ»¶§
-	case EXCEPTION_IN_PAGE_ERROR:            return "EXCEPTION_IN_PAGE_ERROR";			// page¸¦ ·Îµå ÇÒ ¼ö ¾ø´Âµ¥ Á¢±ÙÇÑ°æ¿ì
-	case EXCEPTION_ILLEGAL_INSTRUCTION:      return "EXCEPTION_ILLEGAL_INSTRUCTION";	// Àß¸øµÈ ¸í·É¾î
-	case EXCEPTION_NONCONTINUABLE_EXCEPTION: return "EXCEPTION_NONCONTINUABLE_EXCEPTION";// ÁøÇàÇÒ¼ö ¾ø´Âµ¥ °è¼Ó ÁøÇà½ÃÅ³ °æ¿ì
-	case EXCEPTION_STACK_OVERFLOW:           return "EXCEPTION_STACK_OVERFLOW";			// ½ºÅÃ¿À¹öÇÃ·Î¿ì
-	case EXCEPTION_INVALID_DISPOSITION:      return "EXCEPTION_INVALID_DISPOSITION";	// Àß¸øµÈ±â´É(?)Á¢±Ù C¿¡¼­´Â ¹ß»ýÇÏÁö ¾ÊÀ½
-	case EXCEPTION_GUARD_PAGE:               return "EXCEPTION_GUARD_PAGE";				// Á¢±ÙÇÏÁö¸øÇÏ´Â page¿¡ Á¢±Ù
-	case EXCEPTION_INVALID_HANDLE:           return "EXCEPTION_INVALID_HANDLE";			// Àß¸øµÈ ÇÚµé
-	case 0xE06D7363:                         return "Microsoft C++ Exception";			// Visual C++ ¿À·ù
+	case EXCEPTION_ACCESS_VIOLATION:         return "EXCEPTION_ACCESS_VIOLATION";		// ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_DATATYPE_MISALIGNMENT:    return "EXCEPTION_DATATYPE_MISALIGNMENT";  // ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_BREAKPOINT:               return "EXCEPTION_BREAKPOINT";				// ï¿½ê·¹ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_SINGLE_STEP:              return "EXCEPTION_SINGLE_STEP";			// ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½É¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½
+	case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:    return "EXCEPTION_ARRAY_BOUNDS_EXCEEDED";	// ï¿½è¿­ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_FLT_DENORMAL_OPERAND:     return "EXCEPTION_FLT_DENORMAL_OPERAND";	// ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_FLT_DIVIDE_BY_ZERO:       return "EXCEPTION_FLT_DIVIDE_BY_ZERO";		// float 0ï¿½ï¿½ï¿½Î³ï¿½ï¿½ï¿½
+	case EXCEPTION_FLT_INEXACT_RESULT:       return "EXCEPTION_FLT_INEXACT_RESULT";		// ï¿½Ò¼ï¿½ï¿½ï¿½ ï¿½ï¿½È®ï¿½Ï°ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_FLT_INVALID_OPERATION:    return "EXCEPTION_FLT_INVALID_OPERATION";	// ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_FLT_OVERFLOW:             return "EXCEPTION_FLT_OVERFLOW";			// floatï¿½ï¿½ï¿½ï¿½ï¿½Ã·Î¿ï¿½
+	case EXCEPTION_FLT_STACK_CHECK:          return "EXCEPTION_FLT_STACK_CHECK";		// ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Å³ï¿½ ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_FLT_UNDERFLOW:            return "EXCEPTION_FLT_UNDERFLOW";			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_INT_DIVIDE_BY_ZERO:       return "EXCEPTION_INT_DIVIDE_BY_ZERO";		// intï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_INT_OVERFLOW:             return "EXCEPTION_INT_OVERFLOW";			// intï¿½ï¿½ï¿½ï¿½ï¿½Ã·Î¿ï¿½
+	case EXCEPTION_PRIV_INSTRUCTION:         return "EXCEPTION_PRIV_INSTRUCTION";		// ï¿½ï¿½É¾î¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_IN_PAGE_ERROR:            return "EXCEPTION_IN_PAGE_ERROR";			// pageï¿½ï¿½ ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½
+	case EXCEPTION_ILLEGAL_INSTRUCTION:      return "EXCEPTION_ILLEGAL_INSTRUCTION";	// ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½É¾ï¿½
+	case EXCEPTION_NONCONTINUABLE_EXCEPTION: return "EXCEPTION_NONCONTINUABLE_EXCEPTION";// ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ï¿½
+	case EXCEPTION_STACK_OVERFLOW:           return "EXCEPTION_STACK_OVERFLOW";			// ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ã·Î¿ï¿½
+	case EXCEPTION_INVALID_DISPOSITION:      return "EXCEPTION_INVALID_DISPOSITION";	// ï¿½ß¸ï¿½ï¿½È±ï¿½ï¿½(?)ï¿½ï¿½ï¿½ï¿½ Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_GUARD_PAGE:               return "EXCEPTION_GUARD_PAGE";				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ pageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	case EXCEPTION_INVALID_HANDLE:           return "EXCEPTION_INVALID_HANDLE";			// ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½Úµï¿½
+	case 0xE06D7363:                         return "Microsoft C++ Exception";			// Visual C++ ï¿½ï¿½ï¿½ï¿½
 	default:
 		break;
 	}
@@ -599,9 +599,9 @@ void CTMiniDump::SnapMemoryDump()
 	/*
 	// http://windowssdk.msdn.microsoft.com/en-us/library/ms680519.aspx
 	typedef enum _MINIDUMP_TYPE {
-	MiniDumpNormal                         = 0x0000,	// ¸ðµç ¾²·¹µåÀÇ ÇöÀçÀÇ ½ºÅÃ°ª¸¸ ÀúÀå
-	MiniDumpWithDataSegs                   = 0x0001,	// ·ÎµåµÈ ¸ðÆ«ÀÇ µ¥ÀÌÅ¸¿µ¿ª ÀúÀå
-	MiniDumpWithFullMemory                 = 0x0002,	// ÇÁ·Î¼¼¼­ÀÇ ¸Þ¸ð¸® ÀüÃ¼¸¦ ´ýÇÁ
+	MiniDumpNormal                         = 0x0000,	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	MiniDumpWithDataSegs                   = 0x0001,	// ï¿½Îµï¿½ï¿½ ï¿½ï¿½Æ«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	MiniDumpWithFullMemory                 = 0x0002,	// ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	MiniDumpWithHandleData                 = 0x0004,
 	MiniDumpFilterMemory                   = 0x0008,
 	MiniDumpScanMemory                     = 0x0010,

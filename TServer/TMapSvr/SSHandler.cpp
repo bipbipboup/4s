@@ -15619,7 +15619,8 @@ DWORD CTMapSvrModule::OnMW_MISSIONENABLE_REQ(LPPACKETBUF pBUF)
 		{
 			CTime now = CTime(m_timeCurrent);
 			DWORD dwAdd = (dwStart/HOUR_ONE)%2 == pMission->m_pZone->m_bLine ? dwStart : dwStart + HOUR_ONE;
-			CTime next = CTime(now.GetYear(), now.GetMonth(), now.GetDay(), 0, 0, dwAdd);
+			CTime next = CTime(now.GetYear(), now.GetMonth(), now.GetDay(),
+			(int)(dwAdd / 3600), (int)((dwAdd % 3600) / 60), (int)(dwAdd % 60));
 			pMission->m_timeNextDefend = next.GetTime();
 
 			MAPTLOCAL::iterator itLocal = m_mapTLOCAL.begin();

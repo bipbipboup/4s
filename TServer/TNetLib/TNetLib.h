@@ -3,6 +3,7 @@
 
 #include <winsock2.h>
 #include <mswsock.h>
+#include <winnls.h>
 #include <atlbase.h>
 #include <atlstr.h>
 #include <atltime.h>

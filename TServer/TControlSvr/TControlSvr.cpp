@@ -1586,6 +1586,12 @@ HRESULT CTControlSvrModule::PreMessageLoop( int nShowCmd)
 		return E_FAIL;
 	}
 
+	if (m_bService)
+	{
+		SetServiceStatus(SERVICE_RUNNING);
+		return S_OK;
+	}
+
 	return CAtlServiceModuleT<CTControlSvrModule,IDS_SERVICENAME>::PreMessageLoop(nShowCmd);
 }
 

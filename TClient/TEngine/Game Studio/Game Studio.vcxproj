@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test Release|Win32">
+      <Configuration>Test Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BEA3327A-7B2F-4B55-A0DA-0185950D6B14}</ProjectGuid>
+    <RootNamespace>Game Studio</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <GenerateTypeLibrary>false</GenerateTypeLibrary>
+      <TypeLibraryName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLibd.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLib.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLibTR.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bmp00001.bmp" />
+    <Image Include="res\bmp00002.bmp" />
+    <Image Include="res\bmp00003.bmp" />
+    <Image Include="res\Game Studio.ico" />
+    <Image Include="res\Game StudioDoc.ico" />
+    <Image Include="res\gridtype.bmp" />
+    <Image Include="res\ico00001.ico" />
+    <Image Include="res\ico00002.ico" />
+    <Image Include="res\ico00003.ico" />
+    <Image Include="res\ico00004.ico" />
+    <Image Include="res\ico00005.ico" />
+    <Image Include="res\ico00006.ico" />
+    <Image Include="res\ico00007.ico" />
+    <Image Include="res\ico00008.ico" />
+    <Image Include="res\ico00009.ico" />
+    <Image Include="res\ico00010.ico" />
+    <Image Include="res\ico00011.ico" />
+    <Image Include="res\ico00012.ico" />
+    <Image Include="res\ico00013.ico" />
+    <Image Include="res\ico00014.ico" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\icon_add.ico" />
+    <Image Include="res\icon_box.ico" />
+    <Image Include="res\icon_del.ico" />
+    <Image Include="res\icon_hot.ico" />
+    <Image Include="res\icon_pla.ico" />
+    <Image Include="res\icon_sel.ico" />
+    <Image Include="res\icon_set.ico" />
+    <Image Include="res\icon_sph.ico" />
+    <Image Include="res\icon_uns.ico" />
+    <Image Include="res\idr_game.ico" />
+    <Image Include="res\idr_grid.ico" />
+    <Image Include="res\idr_main.ico" />
+    <Image Include="res\mainfram.bmp" />
+    <Image Include="res\SFX.dds" />
+    <Image Include="res\SND.dds" />
+    <Image Include="res\Star.dds" />
+    <Image Include="res\Target.dds" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+    <Image Include="res\workspac.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Game Studio.reg" />
+    <None Include="res\Box.tmf" />
+    <None Include="res\cursor1.cur" />
+    <None Include="res\Game Studio.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\Game Studio.manifest">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game Studio.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\PS_ADD.psh" />
+    <FxCompile Include="res\PS_ADDSIGNED.psh" />
+    <FxCompile Include="res\PS_ADDSIGNED2X.psh" />
+    <FxCompile Include="res\PS_ADDSMOOTH.psh" />
+    <FxCompile Include="res\PS_BLENDCURRENTALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDDIFFUSEALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDFACTORALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHAPM.psh" />
+    <FxCompile Include="res\PS_DETAILMAP.psh" />
+    <FxCompile Include="res\PS_DOTPRODUCT3.psh" />
+    <FxCompile Include="res\PS_LERP.psh" />
+    <FxCompile Include="res\PS_MAP.psh" />
+    <FxCompile Include="res\PS_MODULATE.psh" />
+    <FxCompile Include="res\PS_MODULATE2X.psh" />
+    <FxCompile Include="res\PS_MODULATE4X.psh" />
+    <FxCompile Include="res\PS_MODULATEALPHA_ADDCOLOR.psh" />
+    <FxCompile Include="res\PS_MODULATECOLOR_ADDALPHA.psh" />
+    <FxCompile Include="res\PS_MODULATEINVALPHA_ADDCOLOR.psh" />
+    <FxCompile Include="res\PS_MODULATEINVCOLOR_ADDALPHA.psh" />
+    <FxCompile Include="res\PS_MULTIPLYADD.psh" />
+    <FxCompile Include="res\PS_SHADER.psh" />
+    <FxCompile Include="res\PS_STAGE1.psh" />
+    <FxCompile Include="res\PS_SUBTRACT.psh" />
+    <FxCompile Include="res\VS_LVERTEX.vsh" />
+    <FxCompile Include="res\VS_MESH.vsh" />
+    <FxCompile Include="res\VS_WMESH.vsh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+    <Text Include="클래스계층도.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AddAnimationDlg.cpp" />
+    <ClCompile Include="AddBSPMapDlg.cpp" />
+    <ClCompile Include="AddHeightMapDlg.cpp" />
+    <ClCompile Include="AddMapDlg.cpp" />
+    <ClCompile Include="AddMediaDlg.cpp" />
+    <ClCompile Include="AddMeshDlg.cpp" />
+    <ClCompile Include="AddTextureDlg.cpp" />
+    <ClCompile Include="AdjustOBJPosDlg.cpp" />
+    <ClCompile Include="AnimationBar.cpp" />
+    <ClCompile Include="AnimationDoc.cpp" />
+    <ClCompile Include="AnimationFrame.cpp" />
+    <ClCompile Include="AnimationView.cpp" />
+    <ClCompile Include="ATTRPage.cpp" />
+    <ClCompile Include="BarContent.cpp" />
+    <ClCompile Include="BSPMAPBar.cpp" />
+    <ClCompile Include="BSPMAPDoc.cpp" />
+    <ClCompile Include="BSPMAPFrame.cpp" />
+    <ClCompile Include="BSPMAPView.cpp" />
+    <ClCompile Include="BuildEMDlg.cpp" />
+    <ClCompile Include="BuildHeightDlg.cpp" />
+    <ClCompile Include="BuildShadeDlg.cpp" />
+    <ClCompile Include="BuildShadowDlg.cpp" />
+    <ClCompile Include="CleanUNITOBJ.cpp" />
+    <ClCompile Include="COMPBar.cpp" />
+    <ClCompile Include="COMPDoc.cpp" />
+    <ClCompile Include="COMPFrame.cpp" />
+    <ClCompile Include="COMPView.cpp" />
+    <ClCompile Include="CtrlDef.cpp" />
+    <ClCompile Include="DetailTextureDlg.cpp" />
+    <ClCompile Include="EditEnableUNITDlg.cpp" />
+    <ClCompile Include="EditFontColorDlg.cpp" />
+    <ClCompile Include="EditFontDlg.cpp" />
+    <ClCompile Include="EditFovDlg.cpp" />
+    <ClCompile Include="EditFreezeMode.cpp" />
+    <ClCompile Include="EditHideMode.cpp" />
+    <ClCompile Include="EditListCtrl.cpp" />
+    <ClCompile Include="EditMenuDlg.cpp" />
+    <ClCompile Include="EditObjectDlg.cpp" />
+    <ClCompile Include="EditUNITDlg.cpp" />
+    <ClCompile Include="EXTMAPBar.cpp" />
+    <ClCompile Include="EXTMAPDoc.cpp" />
+    <ClCompile Include="EXTMAPFrame.cpp" />
+    <ClCompile Include="EXTMAPView.cpp" />
+    <ClCompile Include="FRAMEBar.cpp" />
+    <ClCompile Include="FRAMEDoc.cpp" />
+    <ClCompile Include="FRAMEFrame.cpp" />
+    <ClCompile Include="FramesetDlg.cpp" />
+    <ClCompile Include="FRAMEView.cpp" />
+    <ClCompile Include="Game Studio.cpp" />
+    <ClCompile Include="Game StudioDoc.cpp" />
+    <ClCompile Include="Game StudioView.cpp" />
+    <ClCompile Include="Gizimo.cpp" />
+    <ClCompile Include="Gizmo.cpp" />
+    <ClCompile Include="GridDoc.cpp" />
+    <ClCompile Include="GridFrame.cpp" />
+    <ClCompile Include="GridView.cpp" />
+    <ClCompile Include="GSDialogBar.cpp" />
+    <ClCompile Include="GSEditCtrl.cpp" />
+    <ClCompile Include="GSListCtrl.cpp" />
+    <ClCompile Include="GSToolTipWnd.cpp" />
+    <ClCompile Include="GuideDoc.cpp" />
+    <ClCompile Include="GuideFrame.cpp" />
+    <ClCompile Include="GuideView.cpp" />
+    <ClCompile Include="ImageBar.cpp" />
+    <ClCompile Include="ImageDoc.cpp" />
+    <ClCompile Include="ImageFrame.cpp" />
+    <ClCompile Include="ImageView.cpp" />
+    <ClCompile Include="ItemBase.cpp" />
+    <ClCompile Include="ItemFinder.cpp" />
+    <ClCompile Include="ItemScreenShot.cpp" />
+    <ClCompile Include="LoadRegionDataTexDlg.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MAPDoc.cpp" />
+    <ClCompile Include="MAPFrame.cpp" />
+    <ClCompile Include="MAPLIGHTBar.cpp" />
+    <ClCompile Include="MAPOBJBar.cpp" />
+    <ClCompile Include="MAPSFXBar.cpp" />
+    <ClCompile Include="MAPSNDBar.cpp" />
+    <ClCompile Include="MAPView.cpp" />
+    <ClCompile Include="MediaBar.cpp" />
+    <ClCompile Include="MediaDlg.cpp" />
+    <ClCompile Include="MediaDoc.cpp" />
+    <ClCompile Include="MediaFrame.cpp" />
+    <ClCompile Include="MediaView.cpp" />
+    <ClCompile Include="MeshBar.cpp" />
+    <ClCompile Include="MeshDoc.cpp" />
+    <ClCompile Include="MeshFrame.cpp" />
+    <ClCompile Include="MeshView.cpp" />
+    <ClCompile Include="MiniDump.cpp" />
+    <ClCompile Include="OBJBar.cpp" />
+    <ClCompile Include="OBJDoc.cpp" />
+    <ClCompile Include="ObjectExchangeDlg.cpp" />
+    <ClCompile Include="OBJFrame.cpp" />
+    <ClCompile Include="OBJPage.cpp" />
+    <ClCompile Include="OBJTypeDoc.cpp" />
+    <ClCompile Include="OBJTypeFrame.cpp" />
+    <ClCompile Include="OBJTypeView.cpp" />
+    <ClCompile Include="OBJView.cpp" />
+    <ClCompile Include="ParticleBar.cpp" />
+    <ClCompile Include="Picking.cpp" />
+    <ClCompile Include="PlayCtrl.cpp" />
+    <ClCompile Include="PlayCtrlBar.cpp" />
+    <ClCompile Include="PreviewDlg.cpp" />
+    <ClCompile Include="ProgressDlg.cpp" />
+    <ClCompile Include="RebuildBSPDlg.cpp" />
+    <ClCompile Include="ReplaceDetailTexDlg.cpp" />
+    <ClCompile Include="SaveHeightDlg.cpp" />
+    <ClCompile Include="SaveMinimapDlg.cpp" />
+    <ClCompile Include="SelectFormatDlg.cpp" />
+    <ClCompile Include="SelectObjByName.cpp" />
+    <ClCompile Include="SetBackIMGDlg.cpp" />
+    <ClCompile Include="SetIDSeedDlg.cpp" />
+    <ClCompile Include="SetImportOffsetDlg.cpp" />
+    <ClCompile Include="SFXBar.cpp" />
+    <ClCompile Include="SFXDoc.cpp" />
+    <ClCompile Include="SFXFrame.cpp" />
+    <ClCompile Include="SFXView.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TachyonDoc.cpp" />
+    <ClCompile Include="TextureBar.cpp" />
+    <ClCompile Include="TextureDoc.cpp" />
+    <ClCompile Include="TextureFrame.cpp" />
+    <ClCompile Include="TextureView.cpp" />
+    <ClCompile Include="TimeScaleDlg.cpp" />
+    <ClCompile Include="TimeSettingDlg.cpp" />
+    <ClCompile Include="UpdateDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AddAnimationDlg.h" />
+    <ClInclude Include="AddBSPMapDlg.h" />
+    <ClInclude Include="AddHeightMapDlg.h" />
+    <ClInclude Include="AddMapDlg.h" />
+    <ClInclude Include="AddMediaDlg.h" />
+    <ClInclude Include="AddMeshDlg.h" />
+    <ClInclude Include="AddTextureDlg.h" />
+    <ClInclude Include="AdjustOBJPosDlg.h" />
+    <ClInclude Include="AnimationBar.h" />
+    <ClInclude Include="AnimationDoc.h" />
+    <ClInclude Include="AnimationFrame.h" />
+    <ClInclude Include="AnimationView.h" />
+    <ClInclude Include="ATTRPage.h" />
+    <ClInclude Include="BarContent.h" />
+    <ClInclude Include="BSPMAPBar.h" />
+    <ClInclude Include="BSPMAPDoc.h" />
+    <ClInclude Include="BSPMAPFrame.h" />
+    <ClInclude Include="BSPMAPView.h" />
+    <ClInclude Include="BuildEMDlg.h" />
+    <ClInclude Include="BuildHeightDlg.h" />
+    <ClInclude Include="BuildShadeDlg.h" />
+    <ClInclude Include="BuildShadowDlg.h" />
+    <ClInclude Include="CleanUNITOBJ.h" />
+    <ClInclude Include="COMPBar.h" />
+    <ClInclude Include="COMPDoc.h" />
+    <ClInclude Include="COMPFrame.h" />
+    <ClInclude Include="COMPView.h" />
+    <ClInclude Include="CtrlDef.h" />
+    <ClInclude Include="DetailTextureDlg.h" />
+    <ClInclude Include="EditEnableUNITDlg.h" />
+    <ClInclude Include="EditFontColorDlg.h" />
+    <ClInclude Include="EditFontDlg.h" />
+    <ClInclude Include="EditFovDlg.h" />
+    <ClInclude Include="EditFreezeMode.h" />
+    <ClInclude Include="EditHideMode.h" />
+    <ClInclude Include="EditListCtrl.h" />
+    <ClInclude Include="EditMenuDlg.h" />
+    <ClInclude Include="EditObjectDlg.h" />
+    <ClInclude Include="EditUNITDlg.h" />
+    <ClInclude Include="ExternVar.h" />
+    <ClInclude Include="EXTMAPBar.h" />
+    <ClInclude Include="EXTMAPDoc.h" />
+    <ClInclude Include="EXTMAPFrame.h" />
+    <ClInclude Include="EXTMAPView.h" />
+    <ClInclude Include="FRAMEBar.h" />
+    <ClInclude Include="FRAMEDoc.h" />
+    <ClInclude Include="FRAMEFrame.h" />
+    <ClInclude Include="FramesetDlg.h" />
+    <ClInclude Include="FrameSkip.h" />
+    <ClInclude Include="FRAMEView.h" />
+    <ClInclude Include="Game Studio.h" />
+    <ClInclude Include="Game StudioDoc.h" />
+    <ClInclude Include="Game StudioView.h" />
+    <ClInclude Include="Gizimo.h" />
+    <ClInclude Include="Gizmo.h" />
+    <ClInclude Include="GridDoc.h" />
+    <ClInclude Include="GridFrame.h" />
+    <ClInclude Include="GridView.h" />
+    <ClInclude Include="GSDialogBar.h" />
+    <ClInclude Include="GSEditCtrl.h" />
+    <ClInclude Include="GSListCtrl.h" />
+    <ClInclude Include="GSToolTipWnd.h" />
+    <ClInclude Include="GuideDoc.h" />
+    <ClInclude Include="GuideFrame.h" />
+    <ClInclude Include="GuideView.h" />
+    <ClInclude Include="ImageBar.h" />
+    <ClInclude Include="ImageDoc.h" />
+    <ClInclude Include="ImageFrame.h" />
+    <ClInclude Include="ImageView.h" />
+    <ClInclude Include="ItemBase.h" />
+    <ClInclude Include="ItemFinder.h" />
+    <ClInclude Include="ItemScreenShot.h" />
+    <ClInclude Include="LoadRegionDataTexDlg.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MAPDoc.h" />
+    <ClInclude Include="MAPFrame.h" />
+    <ClInclude Include="MAPLIGHTBar.h" />
+    <ClInclude Include="MAPOBJBar.h" />
+    <ClInclude Include="MAPSFXBar.h" />
+    <ClInclude Include="MAPSNDBar.h" />
+    <ClInclude Include="MAPView.h" />
+    <ClInclude Include="MediaBar.h" />
+    <ClInclude Include="MediaDlg.h" />
+    <ClInclude Include="MediaDoc.h" />
+    <ClInclude Include="MediaFrame.h" />
+    <ClInclude Include="MediaView.h" />
+    <ClInclude Include="MeshBar.h" />
+    <ClInclude Include="MeshDoc.h" />
+    <ClInclude Include="MeshFrame.h" />
+    <ClInclude Include="MeshView.h" />
+    <ClInclude Include="MiniDump.h" />
+    <ClInclude Include="OBJBar.h" />
+    <ClInclude Include="OBJDoc.h" />
+    <ClInclude Include="ObjectExchangeDlg.h" />
+    <ClInclude Include="OBJFrame.h" />
+    <ClInclude Include="OBJPage.h" />
+    <ClInclude Include="OBJTypeDoc.h" />
+    <ClInclude Include="OBJTypeFrame.h" />
+    <ClInclude Include="OBJTypeView.h" />
+    <ClInclude Include="OBJView.h" />
+    <ClInclude Include="ParticleBar.h" />
+    <ClInclude Include="Picking.h" />
+    <ClInclude Include="PlayCtrl.h" />
+    <ClInclude Include="PlayCtrlBar.h" />
+    <ClInclude Include="PreviewDlg.h" />
+    <ClInclude Include="ProgressDlg.h" />
+    <ClInclude Include="RebuildBSPDlg.h" />
+    <ClInclude Include="ReplaceDetailTexDlg.h" />
+    <CustomBuild Include="Resource.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">도움말 컴파일러에 대한 맵 파일을 생성하고 있습니다.</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo // 생성된 도움말 맵 파일입니다. 다음에서 사용: GameStudio.HHP. &gt; "hlp\HTMLDefines.h"
+echo. &gt; "hlp\HTMLDefines.h"
+echo // 명령 (ID_* 및 IDM_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h ID_,HID_,0x10000 IDM_,HIDM_,0x10000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 프롬프트 (IDP_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDP_,HIDP_,0x30000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 리소스 (IDR_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDR_,HIDR_,0x20000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 대화 상자 (IDD_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDD_,HIDD_,0x20000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 프레임 컨트롤 (IDW_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hlp\HTMLDefines.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">도움말 컴파일러에 대한 맵 파일을 생성하고 있습니다.</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo // 생성된 도움말 맵 파일입니다. 다음에서 사용: GameStudio.HHP. &gt; "hlp\HTMLDefines.h"
+echo. &gt; "hlp\HTMLDefines.h"
+echo // 명령 (ID_* 및 IDM_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h ID_,HID_,0x10000 IDM_,HIDM_,0x10000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 프롬프트 (IDP_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDP_,HIDP_,0x30000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 리소스 (IDR_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDR_,HIDR_,0x20000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 대화 상자 (IDD_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDD_,HIDD_,0x20000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 프레임 컨트롤 (IDW_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hlp\HTMLDefines.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">도움말 컴파일러에 대한 맵 파일을 생성하고 있습니다.</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">echo // 생성된 도움말 맵 파일입니다. 다음에서 사용: GameStudio.HHP. &gt; "hlp\HTMLDefines.h"
+echo. &gt; "hlp\HTMLDefines.h"
+echo // 명령 (ID_* 및 IDM_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h ID_,HID_,0x10000 IDM_,HIDM_,0x10000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 프롬프트 (IDP_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDP_,HIDP_,0x30000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 리소스 (IDR_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDR_,HIDR_,0x20000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 대화 상자 (IDD_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDD_,HIDD_,0x20000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // 프레임 컨트롤 (IDW_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Filename)%(Extension)" &gt;&gt; "hlp\HTMLDefines.h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">hlp\HTMLDefines.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="SaveHeightDlg.h" />
+    <ClInclude Include="SaveMinimapDlg.h" />
+    <ClInclude Include="SelectFormatDlg.h" />
+    <ClInclude Include="SelectObjByName.h" />
+    <ClInclude Include="SetBackIMGDlg.h" />
+    <ClInclude Include="SetIDSeedDlg.h" />
+    <ClInclude Include="SetImportOffsetDlg.h" />
+    <ClInclude Include="SFXBar.h" />
+    <ClInclude Include="SFXDoc.h" />
+    <ClInclude Include="SFXFrame.h" />
+    <ClInclude Include="SFXView.h" />
+    <ClInclude Include="StaticMesh.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TachyonDoc.h" />
+    <ClInclude Include="TCMLTag.h" />
+    <ClInclude Include="TextureBar.h" />
+    <ClInclude Include="TextureDoc.h" />
+    <ClInclude Include="TextureFrame.h" />
+    <ClInclude Include="TextureView.h" />
+    <ClInclude Include="TimeScaleDlg.h" />
+    <ClInclude Include="TimeSettingDlg.h" />
+    <ClInclude Include="UpdateDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Engine Lib\Engine Lib.vcxproj">
+      <Project>{c4a71bad-3c8e-4f06-b0db-57de85fdb0db}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\TachyonControl\TachyonControl.vcxproj">
+      <Project>{e2c72177-ca42-4cf4-bebf-e78fecb44e0a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\TCML\TCML.vcxproj">
+      <Project>{0438d87f-42e9-4fd3-8f6d-9d14753231b6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\TComp\TComp.vcxproj">
+      <Project>{5636d24e-b947-4d6b-b411-df09e5c1ed87}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Game Studio.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

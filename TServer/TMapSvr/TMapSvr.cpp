@@ -877,10 +877,10 @@ BYTE CTMapSvrModule::Accept()
 	pPlayer->Open( m_accept, m_vAccept);
 	pPlayer->m_Recv.ExpandIoBuffer(RECV_CLI_SIZE);
 
-	if(pPlayer->m_addr.sin_addr.s_addr == m_addrCtrl.sin_addr.s_addr)
-		pPlayer->m_bSessionType = SESSION_SERVER;
-	else
-		pPlayer->m_bUseCrypt = TRUE;
+	// Always SESSION_CLIENT: game clients connect here after CS_START_ACK.
+	// IP check unreliable in single-machine setups.
+	pPlayer->m_bSessionType = SESSION_CLIENT;
+	pPlayer->m_bUseCrypt = TRUE;
 
 	m_accept = INVALID_SOCKET;
 	m_vAccept.Clear();
@@ -5010,6 +5010,12 @@ HRESULT CTMapSvrModule::PreMessageLoop( int nShowCmd)
 		return E_FAIL;
 	}
 	m_dwThreadID = GetCurrentThreadId();
+
+	if (m_bService)
+	{
+		SetServiceStatus(SERVICE_RUNNING);
+		return S_OK;
+	}
 
 	return CAtlServiceModuleT<CTMapSvrModule,IDS_SERVICENAME>::PreMessageLoop(nShowCmd);
 }

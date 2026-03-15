@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define TVERSION							((WORD) 0x1028)	// Protocol version
+#define TVERSION							((WORD) 0x102b)  // TW client sends 0x102b	// Protocol version
 
 #define SM_BASE								(0x1000)		// System message base for server
 #define MW_BASE								(0x2000)		// Map server <-> World server message base

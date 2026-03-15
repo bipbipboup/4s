@@ -1,0 +1,1156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{3d8a00a6-564f-4ad6-92d5-7c8c3b8b2095}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;manifest</Extensions>
+    </Filter>
+    <Filter Include="Frame">
+      <UniqueIdentifier>{b1184bd5-9200-49e8-9484-8fddf08dcf4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frame\Bar">
+      <UniqueIdentifier>{f2e475b5-8942-4391-8232-dbac050a5b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frame\Dialog">
+      <UniqueIdentifier>{b0848385-b32f-403b-893b-34620cb3bcfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control">
+      <UniqueIdentifier>{b9a51a2d-2998-4e76-b011-57cae3049827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control\Bar">
+      <UniqueIdentifier>{29e832f2-f0a9-444f-93a2-1f60c9f22bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{b89ce036-a3aa-4aa3-b951-183596a8a4cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\BSPMap">
+      <UniqueIdentifier>{b951c5ed-9f38-4dc6-a98c-069c42d319f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\BSPMap\Bar">
+      <UniqueIdentifier>{08bfaaf0-d103-40c6-9e7e-477f21f9e0a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\EXTMap">
+      <UniqueIdentifier>{8e224d0b-0c03-457b-a7dc-a8a24f9580a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\EXTMap\Bar">
+      <UniqueIdentifier>{2c75f9d2-29d5-4bbd-9924-1e7bc70b8f38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Bar">
+      <UniqueIdentifier>{5d1da3e2-41ab-4a33-86a5-c5bc649fd2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Dialog">
+      <UniqueIdentifier>{c0d8b2a2-4994-4d70-93a8-59a0d2635c6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{9c433277-5af4-4c7c-b94c-a9e1feb34ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh\Bar">
+      <UniqueIdentifier>{abd4e465-01de-4a71-899b-98612dc893b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh\Dialog">
+      <UniqueIdentifier>{bfe1a5cb-bdff-4ab9-bb6d-d78670c4fa19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{42bdc288-2f7f-443b-a377-489ae9f5cfd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Bar">
+      <UniqueIdentifier>{f4601667-b1c0-42c9-9787-ce70de77c3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Dialog">
+      <UniqueIdentifier>{16fae326-159f-470d-ad7c-5d4133616fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SFX">
+      <UniqueIdentifier>{d6417dd0-8e8b-45c7-8e6a-455379c80a86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SFX\Bar">
+      <UniqueIdentifier>{7cdf0542-ef1f-4a69-862a-83fa60d876ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SFX\Dialog">
+      <UniqueIdentifier>{fe26891a-2a0a-47f7-ad6f-d80e976b4fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{b26ae47e-7a21-4e7c-a0e0-1a5d2d4ff460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture\Bar">
+      <UniqueIdentifier>{a3792f28-e7a8-49a6-a6d5-e2ba4f485d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture\Dialog">
+      <UniqueIdentifier>{318983da-c269-43a0-85ed-923cb7e69eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image">
+      <UniqueIdentifier>{4f519688-f248-4bdc-ac9a-c035fb5109d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image\Bar">
+      <UniqueIdentifier>{024755c8-c2ba-4b3d-b664-243dda0e5194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media">
+      <UniqueIdentifier>{b9758498-b307-4e9f-baf3-71e283cc2e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media\Bar">
+      <UniqueIdentifier>{b17c2e8e-6110-49f9-baae-226815803c00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media\Dialog">
+      <UniqueIdentifier>{8f654a24-f72e-4a09-9602-e8f14569491e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{05c2ea2e-b1c8-4acb-ad5e-c396720a1c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation\Bar">
+      <UniqueIdentifier>{492c074a-6010-453a-838f-360eef07e6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation\Dialog">
+      <UniqueIdentifier>{ab1c1d45-b8d3-4636-8982-b0d7f6ee9dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectType">
+      <UniqueIdentifier>{afa5b618-6ca6-495a-9dc0-f608dcdc2c12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectType\PropertyPage">
+      <UniqueIdentifier>{90af001e-fe8f-4873-90ee-d9096a6b46aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{0142e3e0-aba3-4441-94b9-6f9727d65c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio">
+      <UniqueIdentifier>{e65de588-2503-4dbf-968f-784625021b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Tree">
+      <UniqueIdentifier>{14b9bf3c-8b3e-40df-b826-c01042fd210f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Dialog">
+      <UniqueIdentifier>{ad71d403-e1f6-46a8-8827-78de4e817b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Base Document">
+      <UniqueIdentifier>{d700db76-2955-4c7c-aea7-67aee8390eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Base View">
+      <UniqueIdentifier>{7cbae031-4451-46ab-87fb-b9ccd1b1c45c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Base Frame">
+      <UniqueIdentifier>{76d35194-34aa-4f70-bcef-a2dcfedb3b0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Bar">
+      <UniqueIdentifier>{0da3c0b0-b725-416f-980b-5e10aef0b716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStudio\Etc">
+      <UniqueIdentifier>{f8db8b57-bf20-47a9-9073-ca46ba7d25a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{af0fd330-4033-4aa3-8945-d3f1d209ae76}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bmp00001.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bmp00002.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\bmp00003.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Game Studio.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Game StudioDoc.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\gridtype.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00001.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00002.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00003.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00004.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00005.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00006.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00007.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00008.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00009.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00010.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00011.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00012.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00013.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\ico00014.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon2.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_add.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_box.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_del.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_hot.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_pla.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_sel.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_set.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_sph.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\icon_uns.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\idr_game.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\idr_grid.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\idr_main.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\mainfram.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\SFX.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\SND.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Star.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Target.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\toolbar1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\workspac.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Box.tmf">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\cursor1.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Game Studio.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="Game Studio.reg">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game Studio.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\PS_ADD.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_ADDSIGNED.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_ADDSIGNED2X.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_ADDSMOOTH.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDCURRENTALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDDIFFUSEALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDFACTORALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHAPM.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_DETAILMAP.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_DOTPRODUCT3.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_LERP.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MAP.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATE.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATE2X.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATE4X.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATEALPHA_ADDCOLOR.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATECOLOR_ADDALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATEINVALPHA_ADDCOLOR.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MODULATEINVCOLOR_ADDALPHA.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_MULTIPLYADD.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_SHADER.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_STAGE1.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PS_SUBTRACT.psh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\VS_LVERTEX.vsh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\VS_MESH.vsh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="res\VS_WMESH.vsh">
+      <Filter>리소스 파일</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="클래스계층도.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FRAMEDoc.cpp">
+      <Filter>Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="FRAMEFrame.cpp">
+      <Filter>Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="FRAMEView.cpp">
+      <Filter>Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="FRAMEBar.cpp">
+      <Filter>Frame\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="EditFontColorDlg.cpp">
+      <Filter>Frame\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditFontDlg.cpp">
+      <Filter>Frame\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditMenuDlg.cpp">
+      <Filter>Frame\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="COMPDoc.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="COMPFrame.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="COMPView.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="COMPBar.cpp">
+      <Filter>Control\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPDoc.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPFrame.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPView.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="BSPMAPDoc.cpp">
+      <Filter>Map\BSPMap</Filter>
+    </ClCompile>
+    <ClCompile Include="BSPMAPFrame.cpp">
+      <Filter>Map\BSPMap</Filter>
+    </ClCompile>
+    <ClCompile Include="BSPMAPView.cpp">
+      <Filter>Map\BSPMap</Filter>
+    </ClCompile>
+    <ClCompile Include="BSPMAPBar.cpp">
+      <Filter>Map\BSPMap\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="EXTMAPDoc.cpp">
+      <Filter>Map\EXTMap</Filter>
+    </ClCompile>
+    <ClCompile Include="EXTMAPFrame.cpp">
+      <Filter>Map\EXTMap</Filter>
+    </ClCompile>
+    <ClCompile Include="EXTMAPView.cpp">
+      <Filter>Map\EXTMap</Filter>
+    </ClCompile>
+    <ClCompile Include="EXTMAPBar.cpp">
+      <Filter>Map\EXTMap\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPLIGHTBar.cpp">
+      <Filter>Map\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPOBJBar.cpp">
+      <Filter>Map\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPSFXBar.cpp">
+      <Filter>Map\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPSNDBar.cpp">
+      <Filter>Map\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="AddBSPMapDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="AddHeightMapDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="AddMapDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="AdjustOBJPosDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildEMDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildHeightDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildShadeDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildShadowDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="CleanUNITOBJ.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DetailTextureDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditEnableUNITDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditFreezeMode.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditHideMode.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditUNITDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadRegionDataTexDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectExchangeDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="RebuildBSPDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveHeightDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveMinimapDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectObjByName.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SetImportOffsetDlg.cpp">
+      <Filter>Map\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshDoc.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshFrame.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshView.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshBar.cpp">
+      <Filter>Mesh\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="AddMeshDlg.cpp">
+      <Filter>Mesh\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJDoc.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFrame.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJView.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJBar.cpp">
+      <Filter>Object\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="EditObjectDlg.cpp">
+      <Filter>Object\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SFXDoc.cpp">
+      <Filter>SFX</Filter>
+    </ClCompile>
+    <ClCompile Include="SFXFrame.cpp">
+      <Filter>SFX</Filter>
+    </ClCompile>
+    <ClCompile Include="SFXView.cpp">
+      <Filter>SFX</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleBar.cpp">
+      <Filter>SFX\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="SFXBar.cpp">
+      <Filter>SFX\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="FramesetDlg.cpp">
+      <Filter>SFX\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDoc.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureFrame.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureView.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureBar.cpp">
+      <Filter>Texture\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="AddTextureDlg.cpp">
+      <Filter>Texture\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageDoc.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFrame.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageView.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageBar.cpp">
+      <Filter>Image\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaDoc.cpp">
+      <Filter>Media</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaFrame.cpp">
+      <Filter>Media</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaView.cpp">
+      <Filter>Media</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaBar.cpp">
+      <Filter>Media\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="AddMediaDlg.cpp">
+      <Filter>Media\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaDlg.cpp">
+      <Filter>Media\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationDoc.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationFrame.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationView.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationBar.cpp">
+      <Filter>Animation\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="AddAnimationDlg.cpp">
+      <Filter>Animation\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeScaleDlg.cpp">
+      <Filter>Animation\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJTypeDoc.cpp">
+      <Filter>ObjectType</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJTypeFrame.cpp">
+      <Filter>ObjectType</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJTypeView.cpp">
+      <Filter>ObjectType</Filter>
+    </ClCompile>
+    <ClCompile Include="ATTRPage.cpp">
+      <Filter>ObjectType\PropertyPage</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJPage.cpp">
+      <Filter>ObjectType\PropertyPage</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBase.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Studio.cpp">
+      <Filter>GameStudio</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>GameStudio</Filter>
+    </ClCompile>
+    <ClCompile Include="Game StudioDoc.cpp">
+      <Filter>GameStudio\Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="Game StudioView.cpp">
+      <Filter>GameStudio\Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="EditFovDlg.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemFinder.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemScreenShot.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectFormatDlg.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SetBackIMGDlg.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="SetIDSeedDlg.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateDlg.cpp">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="GridDoc.cpp">
+      <Filter>GameStudio\Base Document</Filter>
+    </ClCompile>
+    <ClCompile Include="GuideDoc.cpp">
+      <Filter>GameStudio\Base Document</Filter>
+    </ClCompile>
+    <ClCompile Include="TachyonDoc.cpp">
+      <Filter>GameStudio\Base Document</Filter>
+    </ClCompile>
+    <ClCompile Include="GridView.cpp">
+      <Filter>GameStudio\Base View</Filter>
+    </ClCompile>
+    <ClCompile Include="GuideView.cpp">
+      <Filter>GameStudio\Base View</Filter>
+    </ClCompile>
+    <ClCompile Include="GridFrame.cpp">
+      <Filter>GameStudio\Base Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="GuideFrame.cpp">
+      <Filter>GameStudio\Base Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="BarContent.cpp">
+      <Filter>GameStudio\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="GSDialogBar.cpp">
+      <Filter>GameStudio\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="CtrlDef.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="EditListCtrl.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizimo.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Gizmo.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="GSEditCtrl.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="GSListCtrl.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="GSToolTipWnd.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Picking.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayCtrl.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayCtrlBar.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="PreviewDlg.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressDlg.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSettingDlg.cpp">
+      <Filter>GameStudio\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniDump.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="ReplaceDetailTexDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FRAMEDoc.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="FRAMEFrame.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="FRAMEView.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="FRAMEBar.h">
+      <Filter>Frame\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="EditFontColorDlg.h">
+      <Filter>Frame\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditFontDlg.h">
+      <Filter>Frame\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditMenuDlg.h">
+      <Filter>Frame\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="COMPDoc.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="COMPFrame.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="COMPView.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="COMPBar.h">
+      <Filter>Control\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPDoc.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPFrame.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPView.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="BSPMAPDoc.h">
+      <Filter>Map\BSPMap</Filter>
+    </ClInclude>
+    <ClInclude Include="BSPMAPFrame.h">
+      <Filter>Map\BSPMap</Filter>
+    </ClInclude>
+    <ClInclude Include="BSPMAPView.h">
+      <Filter>Map\BSPMap</Filter>
+    </ClInclude>
+    <ClInclude Include="BSPMAPBar.h">
+      <Filter>Map\BSPMap\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="EXTMAPDoc.h">
+      <Filter>Map\EXTMap</Filter>
+    </ClInclude>
+    <ClInclude Include="EXTMAPFrame.h">
+      <Filter>Map\EXTMap</Filter>
+    </ClInclude>
+    <ClInclude Include="EXTMAPView.h">
+      <Filter>Map\EXTMap</Filter>
+    </ClInclude>
+    <ClInclude Include="EXTMAPBar.h">
+      <Filter>Map\EXTMap\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPLIGHTBar.h">
+      <Filter>Map\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPOBJBar.h">
+      <Filter>Map\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPSFXBar.h">
+      <Filter>Map\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPSNDBar.h">
+      <Filter>Map\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="AddBSPMapDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="AddHeightMapDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="AddMapDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjustOBJPosDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildEMDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildHeightDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildShadeDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildShadowDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="CleanUNITOBJ.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DetailTextureDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditEnableUNITDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditFreezeMode.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditHideMode.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditUNITDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadRegionDataTexDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectExchangeDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="RebuildBSPDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveHeightDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveMinimapDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectObjByName.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SetImportOffsetDlg.h">
+      <Filter>Map\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshDoc.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshFrame.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshView.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshBar.h">
+      <Filter>Mesh\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="AddMeshDlg.h">
+      <Filter>Mesh\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJDoc.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFrame.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJView.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJBar.h">
+      <Filter>Object\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="EditObjectDlg.h">
+      <Filter>Object\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameSkip.h">
+      <Filter>SFX</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXDoc.h">
+      <Filter>SFX</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXFrame.h">
+      <Filter>SFX</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXView.h">
+      <Filter>SFX</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleBar.h">
+      <Filter>SFX\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXBar.h">
+      <Filter>SFX\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="FramesetDlg.h">
+      <Filter>SFX\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDoc.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureFrame.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureView.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureBar.h">
+      <Filter>Texture\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="AddTextureDlg.h">
+      <Filter>Texture\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageDoc.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFrame.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageView.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageBar.h">
+      <Filter>Image\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaDoc.h">
+      <Filter>Media</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaFrame.h">
+      <Filter>Media</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaView.h">
+      <Filter>Media</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaBar.h">
+      <Filter>Media\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="AddMediaDlg.h">
+      <Filter>Media\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaDlg.h">
+      <Filter>Media\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationDoc.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFrame.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationView.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationBar.h">
+      <Filter>Animation\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="AddAnimationDlg.h">
+      <Filter>Animation\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeScaleDlg.h">
+      <Filter>Animation\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJTypeDoc.h">
+      <Filter>ObjectType</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJTypeFrame.h">
+      <Filter>ObjectType</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJTypeView.h">
+      <Filter>ObjectType</Filter>
+    </ClInclude>
+    <ClInclude Include="ATTRPage.h">
+      <Filter>ObjectType\PropertyPage</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJPage.h">
+      <Filter>ObjectType\PropertyPage</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBase.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="TCMLTag.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Studio.h">
+      <Filter>GameStudio</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>GameStudio</Filter>
+    </ClInclude>
+    <ClInclude Include="Game StudioDoc.h">
+      <Filter>GameStudio\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Game StudioView.h">
+      <Filter>GameStudio\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="EditFovDlg.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemFinder.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemScreenShot.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectFormatDlg.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SetBackIMGDlg.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SetIDSeedDlg.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateDlg.h">
+      <Filter>GameStudio\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="GridDoc.h">
+      <Filter>GameStudio\Base Document</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideDoc.h">
+      <Filter>GameStudio\Base Document</Filter>
+    </ClInclude>
+    <ClInclude Include="TachyonDoc.h">
+      <Filter>GameStudio\Base Document</Filter>
+    </ClInclude>
+    <ClInclude Include="GridView.h">
+      <Filter>GameStudio\Base View</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideView.h">
+      <Filter>GameStudio\Base View</Filter>
+    </ClInclude>
+    <ClInclude Include="GridFrame.h">
+      <Filter>GameStudio\Base Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideFrame.h">
+      <Filter>GameStudio\Base Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="BarContent.h">
+      <Filter>GameStudio\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="GSDialogBar.h">
+      <Filter>GameStudio\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="CtrlDef.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="EditListCtrl.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="ExternVar.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizimo.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Gizmo.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="GSEditCtrl.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="GSListCtrl.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="GSToolTipWnd.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Picking.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayCtrl.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayCtrlBar.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="PreviewDlg.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressDlg.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticMesh.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeSettingDlg.h">
+      <Filter>GameStudio\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniDump.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ReplaceDetailTexDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\Game Studio.manifest">
+      <Filter>리소스 파일</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Resource.h">
+      <Filter>Global</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

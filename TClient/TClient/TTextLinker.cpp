@@ -179,7 +179,7 @@ CString CTTextLinker::MakeLinkToNetText( TEdit *pEdit, BOOL bLengthSafety, INT n
 
 	for( TComponent::TextSettingSet::iterator it = pEdit->GetTextSettingItrBegin(); it != pEdit->GetTextSettingItrEnd(); it++)
 	{
-		TComponent::TextSetting& vDATA = (*it);
+		const TComponent::TextSetting& vDATA = (*it);
 
 		if( wPOS <= vDATA.iStart && wPOS <= vDATA.iEnd )
 		{
@@ -545,13 +545,13 @@ CString CTTextLinker::SplitTextByComp(TComponent* pComp, LONG nSize, const CStri
 				{
 					if( !strWORD.IsEmpty() )
 					{
-						// ½ÃÇè¿¡ µé°Ô ÇÏÀÚ.
+						// ï¿½ï¿½ï¿½è¿¡ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 						CString strTEST(strLINE);
 						strTEST.Append( strWORD );
 						pComp->GetTextExtentPoint( strTEST, szSIZE );
 						if( szSIZE.cx > nSize )
 						{
-							// ÀÌ ´Ü¾î¸¦ Æ÷ÇÔÇÒ¼ø¾ø´Ù.
+							// ï¿½ï¿½ ï¿½Ü¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½.
 							nMsgIndex -= strWORD.GetLength();
 							strWORD.Append( strLEFT );
 							strLEFT = strWORD;
@@ -599,7 +599,7 @@ CString CTTextLinker::SplitTextByComp(TComponent* pComp, LONG nSize, const CStri
 					CSize sizeWORD;
 					pComp->GetTextExtentPoint( strWORD, sizeWORD);
 
-					if( sizeWORD.cx > nSize ) // ÇÑ ´Ü¾î ±æÀÌ°¡ ÄÄÆ÷³ÍÆ®ÀÇ °¡·Î±æÀÌº¸´Ù ±æ´Ù. ÀÌ·²¶© ¹«Á¶°Ç ÀÚ¸£±â.
+					if( sizeWORD.cx > nSize ) // ï¿½ï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½. ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½.
 					{
 						CSize sizeLINE;
 						pComp->GetTextExtentPoint( strLINE, sizeLINE );
@@ -625,7 +625,7 @@ CString CTTextLinker::SplitTextByComp(TComponent* pComp, LONG nSize, const CStri
 								break;
 						}
 
-						// strNewWord¸¸ strLINE¿¡ Æ÷ÇÔ, ³ª¸ÓÁø strLEFT·Î µÇµ¹¾Æ°¨.
+						// strNewWordï¿½ï¿½ strLINEï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ strLEFTï¿½ï¿½ ï¿½Çµï¿½ï¿½Æ°ï¿½.
 						strWORD = strWORD.Right( strWORD.GetLength() - strNewWord.GetLength() );
 						nMsgIndex -= strWORD.GetLength();
 						strWORD.Append( strLEFT );
@@ -640,13 +640,13 @@ CString CTTextLinker::SplitTextByComp(TComponent* pComp, LONG nSize, const CStri
 
 			if( !strWORD.IsEmpty() )
 			{
-				// ½ÃÇè¿¡ µé°Ô ÇÏÀÚ.
+				// ï¿½ï¿½ï¿½è¿¡ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 				CString strTEST(strLINE);
 				strTEST.Append( strWORD );
 				pComp->GetTextExtentPoint( strTEST, szSIZE );
 				if( szSIZE.cx > nSize )
 				{
-					// ÀÌ ´Ü¾î¸¦ Æ÷ÇÔÇÒ¼ø¾ø´Ù.
+					// ï¿½ï¿½ ï¿½Ü¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½.
 					nMsgIndex -= strWORD.GetLength();
 					strWORD.Append( strLEFT );
 					strLEFT = strWORD;
@@ -701,7 +701,7 @@ void CTTextLinker::GetTextSettings( TComponent* pTxtSettingComp,
 		const TTEXT_LINK_LINE& line = vLINES[i];
 		while( itr != end )
 		{
-			TComponent::TextSetting& data = *itr;
+			const TComponent::TextSetting& data = *itr;
 			if( data.iStart >= line.nEnd )
 				break;
 

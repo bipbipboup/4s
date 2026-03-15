@@ -38,7 +38,7 @@ typedef enum TMP_HACK_DETECT_TYPE
 } *LPTMP_HACK_DETECT_TYPE;
 
 
-// °ÔÀÓ°¡µå.
+// ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½.
 BOOL CALLBACK NPGameMonCallback(DWORD dwMsg, DWORD dwArg)
 {
 	theApp.m_strNPMSG.Empty();
@@ -314,7 +314,7 @@ BOOL CTClientApp::InitInstance()
 	{
 		SetThreadLocale( MAKELCID( MAKELANGID(LANG_PORTUGUESE, SUBLANG_DEFAULT) , SORT_DEFAULT ) );
 	}
-	else	// ±¹³». ´Ü¾î´ÜÀ§·Î ÀÚ¸£´Ùº¸´Ï ±ä ´Ü¾î ÀÏ ¶§ ³Ê¹« ¸¹ÀÌ Àß·Á¼­ ¾Æ¸§´äÁö ¾ÊÀ½.
+	else	// ï¿½ï¿½ï¿½ï¿½. ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½Ùºï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß·ï¿½ï¿½ï¿½ ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	{
 		TComponent::m_bUseWordBreak = FALSE;
 	}
@@ -346,7 +346,7 @@ BOOL CTClientApp::InitInstance()
 	}
 #endif
 
-	// °ÔÀÓ°¡µå.
+	// ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½.
 	m_pNpgl = NULL;
 	if( CTNationOption::RUSSIA )
 	{
@@ -411,7 +411,7 @@ BOOL CTClientApp::InitInstance()
 				strMsg = CTChart::Format( TSTR_NPGG_ERROR_COLLISION );
 				break;
 			default:
-				// ÀûÀýÇÑ Á¾·á ¸Þ½ÃÁö Ãâ·Â
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 				strMsg = CTChart::Format( TSTR_NPGG_ERROR );
 					break;
 			}
@@ -435,19 +435,7 @@ BOOL CTClientApp::InitInstance()
 
 #ifdef TEST_MODE
 #else
-	if ( !CTNationOption::INSTALL_HACKSHIELD && !CTNationOption::INSTALL_GAMEGUARD )
-	{
-		if( !m_vModuleGuard.InitProtector(CString(_T(".\\TClientMP.mpc"))) ||
-			!m_vModuleGuard.CheckImageBase(_T(".\\TClient.exe")) ||
-			!m_vModuleGuard.BeginWatch() )
-		{
-			CString strMSG = CTChart::LoadString(TSTR_ERROR_LOADMPC);
-
-			MessageBox( NULL, strMSG, CTNationOption::m_strAppTitle, MB_OK);
-
-			return FALSE;
-		}
-	}
+	// TClientMP.mpc check bypasse (serveur prive - pas d'anti-tamper necessaire)
 #endif
 
 	HANDLE hFile = CreateFile(
@@ -548,7 +536,7 @@ BOOL CTClientApp::InitInstance()
 		return FALSE;
 	}
 
-	// °ÔÀÓ°¡µå.
+	// ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½.
 	if( CTNationOption::RUSSIA )
 	{
 		if( CheckD3DDevice( (LPVOID)m_pTachyonWnd->m_Device.m_pDevice, "d3d9.dll" ) )
@@ -806,7 +794,7 @@ int CTClientApp::ExitInstance()
 #endif
 	CTChart::ReleaseTString();
 
-	// °ÔÀÓ°¡µå.
+	// ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½.
 	if( CTNationOption::RUSSIA && m_pNpgl )
 	{
 		delete m_pNpgl;
@@ -870,7 +858,7 @@ void CTClientApp::ExitLoadThread( BYTE bCancelCMD)
 	m_bLoadRun = TRUE;
 }
 
-#define REG_SETTINGS_RESET_IDENTITY		(0x00000001)		// ±âÁ¸ °ªÀ» ´Ù¸¥ °ªÀ¸·Î ¼¼ÆÃÇÏ¸é µðÆúÆ®·Î ¸®¼ÂµÈ´Ù. ( 0À» Á¦¿ÜÇÑ °ª )
+#define REG_SETTINGS_RESET_IDENTITY		(0x00000001)		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ÂµÈ´ï¿½. ( 0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ )
 
 void CTClientApp::LoadStdProfileSettings()
 {
@@ -1477,15 +1465,7 @@ int CTClientApp::Run()
 		}
 #ifdef TEST_MODE
 #else
-		if ( !CTNationOption::INSTALL_HACKSHIELD && !CTNationOption::INSTALL_GAMEGUARD )
-		{
-			if( !bHackPass && !m_vModuleGuard.CheckValid() )
-			{
-				m_bHackMSG = m_vModuleGuard.HackDetected() ? TMP_HACK_FOUND : TMP_HACK_TIMEOUT;
-				m_pTachyonWnd->PostMessage(WM_QUIT);
-			}
-			bHackPass = (bHackPass + 1) % 5;
-		}
+		// ModuleGuard CheckValid bypasse (serveur prive)
 #endif
 		SMART_LOCKCS(&m_cs);
 		if(!MainProc())
@@ -1564,7 +1544,7 @@ BOOL CTClientApp::HackShield_Update()
 		HsExtError,
 		1000 * 20 ); 
 	
-	if ( dwRet != ERROR_SUCCESS) { // ¿¡·¯ Ã³¸® 
+	if ( dwRet != ERROR_SUCCESS) { // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ 
 		switch ( dwRet ) { 
 			case HSERROR_ENVFILE_NOTREAD:
 				return FALSE;

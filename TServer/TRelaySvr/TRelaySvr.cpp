@@ -156,6 +156,12 @@ HRESULT CTRelaySvrModule::PreMessageLoop(int nShowCmd)
 	}
 	m_dwThreadID = GetCurrentThreadId();
 
+	if (m_bService)
+	{
+		SetServiceStatus(SERVICE_RUNNING);
+		return S_OK;
+	}
+
 	return CAtlServiceModuleT< CTRelaySvrModule, IDS_SERVICENAME >::PreMessageLoop(nShowCmd);
 }
 HRESULT CTRelaySvrModule::PostMessageLoop()

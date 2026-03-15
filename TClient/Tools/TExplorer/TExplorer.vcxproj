@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test Release|Win32">
+      <Configuration>Test Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3AF4E6FC-2DF7-4CFC-9979-E71BE475B70B}</ProjectGuid>
+    <RootNamespace>TExplorer</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">
+    <OutDir>Test Release\</OutDir>
+    <IntDir>Test Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/Zm256 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\TProtocol;..\..\TEngine\TachyonControl;..\..\TEngine\Engine Lib;..\..\TEngine\TComp;..\..\TEngine\TCML;..\..\History Files;..\..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLibd.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\TProtocol;..\..\TEngine\TachyonControl;..\..\TEngine\Engine Lib;..\..\TEngine\TComp;..\..\TEngine\TCML;..\..\History Files;..\..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLib.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\TProtocol;..\..\TEngine\TachyonControl;..\..\TEngine\Engine Lib;..\..\TEngine\TComp;..\..\TEngine\TCML;..\..\History Files;..\..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLibTR.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TCMDHandler.cpp" />
+    <ClCompile Include="TExplorer.cpp" />
+    <ClCompile Include="TExplorerBSP.cpp" />
+    <ClCompile Include="TExplorerCAM.cpp" />
+    <ClCompile Include="TExplorerChar.cpp" />
+    <ClCompile Include="TExplorerFlag.cpp" />
+    <ClCompile Include="TExplorerGame.cpp" />
+    <ClCompile Include="TExplorerGM.cpp" />
+    <ClCompile Include="TExplorerInven.cpp" />
+    <ClCompile Include="TExplorerItem.cpp" />
+    <ClCompile Include="TExplorerKEY.cpp" />
+    <ClCompile Include="TExplorerMAP.cpp" />
+    <ClCompile Include="TExplorerMoveObj.cpp" />
+    <ClCompile Include="TExplorerNpc.cpp" />
+    <ClCompile Include="TExplorerObjBase.cpp" />
+    <ClCompile Include="TExplorerObject.cpp" />
+    <ClCompile Include="TExplorerSFX.cpp" />
+    <ClCompile Include="TExplorerWnd.cpp" />
+    <ClCompile Include="TMinimapDlg.cpp" />
+    <ClCompile Include="TWorldmapDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TErrorCode.h" />
+    <ClInclude Include="TExplorer.h" />
+    <ClInclude Include="TExplorerBSP.h" />
+    <ClInclude Include="TExplorerCAM.h" />
+    <ClInclude Include="TExplorerChar.h" />
+    <ClInclude Include="TExplorerCMD.h" />
+    <ClInclude Include="TExplorerFlag.h" />
+    <ClInclude Include="TExplorerGame.h" />
+    <ClInclude Include="TExplorerInven.h" />
+    <ClInclude Include="TExplorerItem.h" />
+    <ClInclude Include="TExplorerKEY.h" />
+    <ClInclude Include="TExplorerMAP.h" />
+    <ClInclude Include="TExplorerMoveObj.h" />
+    <ClInclude Include="TExplorerNpc.h" />
+    <ClInclude Include="TExplorerObjBase.h" />
+    <ClInclude Include="TExplorerObject.h" />
+    <ClInclude Include="TExplorerSFX.h" />
+    <ClInclude Include="TExplorerType.h" />
+    <ClInclude Include="TExplorerWnd.h" />
+    <ClInclude Include="TMinimapDlg.h" />
+    <ClInclude Include="TWorldmapDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Path_flag.tmf" />
+    <None Include="res\TExplorer.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\PS_ADD.psh" />
+    <FxCompile Include="res\PS_ADDSIGNED.psh" />
+    <FxCompile Include="res\PS_ADDSIGNED2X.psh" />
+    <FxCompile Include="res\PS_ADDSMOOTH.psh" />
+    <FxCompile Include="res\PS_BLENDCURRENTALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDDIFFUSEALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDFACTORALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHA.psh" />
+    <FxCompile Include="res\PS_BLENDTEXTUREALPHAPM.psh" />
+    <FxCompile Include="res\PS_DETAILMAP.psh" />
+    <FxCompile Include="res\PS_DOTPRODUCT3.psh" />
+    <FxCompile Include="res\PS_LERP.psh" />
+    <FxCompile Include="res\PS_MAP.psh" />
+    <FxCompile Include="res\PS_MODULATE.psh" />
+    <FxCompile Include="res\PS_MODULATE2X.psh" />
+    <FxCompile Include="res\PS_MODULATE4X.psh" />
+    <FxCompile Include="res\PS_MODULATEALPHA_ADDCOLOR.psh" />
+    <FxCompile Include="res\PS_MODULATECOLOR_ADDALPHA.psh" />
+    <FxCompile Include="res\PS_MODULATEINVALPHA_ADDCOLOR.psh" />
+    <FxCompile Include="res\PS_MODULATEINVCOLOR_ADDALPHA.psh" />
+    <FxCompile Include="res\PS_MULTIPLYADD.psh" />
+    <FxCompile Include="res\PS_SHADER.psh" />
+    <FxCompile Include="res\PS_STAGE1.psh" />
+    <FxCompile Include="res\PS_SUBTRACT.psh" />
+    <FxCompile Include="res\VS_LVERTEX.vsh" />
+    <FxCompile Include="res\VS_MESH.vsh" />
+    <FxCompile Include="res\VS_WMESH.vsh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\TExplorer.ico" />
+    <Image Include="res\TExplorerDoc.ico" />
+    <Image Include="res\Toolbar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TExplorer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\TExplorer.manifest">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TChart\TChart.vcxproj">
+      <Project>{53979323-78cc-4fba-9ad3-4dcaf95db742}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TEngine\Engine Lib\Engine Lib.vcxproj">
+      <Project>{c4a71bad-3c8e-4f06-b0db-57de85fdb0db}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TEngine\TCML\TCML.vcxproj">
+      <Project>{0438d87f-42e9-4fd3-8f6d-9d14753231b6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TEngine\TComp\TComp.vcxproj">
+      <Project>{5636d24e-b947-4d6b-b411-df09e5c1ed87}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
