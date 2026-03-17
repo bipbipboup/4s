@@ -71,9 +71,9 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;.\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;.\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;TEST_MODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -99,11 +99,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;.\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;.\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -132,11 +132,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;.\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;.\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;USE_NVPERFHUD;USE_CONSOLE;TEST_MODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>

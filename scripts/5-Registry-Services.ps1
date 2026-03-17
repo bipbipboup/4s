@@ -21,7 +21,7 @@ $ErrorActionPreference = "Stop"
 
 # --- CONFIGURATION - MODIFIER SI NECESSAIRE ---
 $InstanceName = "FourStory"
-$SaPassword   = "Bonjour123!"    # Meme valeur que dans les scripts 3 et 4
+$SaPassword   = "ChangeThisStrongPassword!"    # Meme valeur que dans les scripts 3 et 4
 $ServerConn   = ".\$InstanceName"
 $GlobalDB     = "TGLOBAL_GSP"
 $GameDB       = "TGAME_GSP"

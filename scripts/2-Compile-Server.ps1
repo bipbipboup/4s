@@ -12,7 +12,7 @@
 #Requires -RunAsAdministrator
 $ErrorActionPreference = "Stop"
 
-$SourceBase   = "C:\Users\Administrator\4s"
+$SourceBase   = Split-Path -Parent $PSScriptRoot
 $TServerDir   = "$SourceBase\TServer"
 $TServerSln   = "$TServerDir\TServer.sln"
 $Destination  = "C:\TServices_4s"

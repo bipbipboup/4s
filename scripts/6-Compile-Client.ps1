@@ -13,7 +13,7 @@
 #Requires -RunAsAdministrator
 $ErrorActionPreference = "Stop"
 
-$SourceBase    = "C:\4Story_3.5_Source\4s"
+$SourceBase    = Split-Path -Parent $PSScriptRoot
 $TClientDir    = "$SourceBase\TClient"
 $TClientSln    = "$TClientDir\TClient.sln"
 $DXInclude     = "$SourceBase\Includes\DX\Include"

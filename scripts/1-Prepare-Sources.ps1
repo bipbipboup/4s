@@ -22,7 +22,7 @@
 #Requires -RunAsAdministrator
 $ErrorActionPreference = "Stop"
 
-$SourceBase  = "C:\Users\Administrator\4s"
+$SourceBase  = Split-Path -Parent $PSScriptRoot
 $TServerDir  = "$SourceBase\TServer"
 $TServerSln  = "$TServerDir\TServer.sln"
 
@@ -156,15 +156,20 @@ foreach ($vcx in @(
     $changed = $false
     foreach ($idg in $xml.Project.ItemDefinitionGroup) {
         $cl = $idg.ClCompile
-        if ($cl -and -not $cl.ForcedIncludeFiles) {
-            $e = $xml.CreateElement("ForcedIncludeFiles", $ns)
-            $e.InnerText = $preIncludePath
-            $cl.AppendChild($e) | Out-Null
-            $changed = $true
+        if ($cl) {
+            if (-not $cl.ForcedIncludeFiles) {
+                $e = $xml.CreateElement("ForcedIncludeFiles", $ns)
+                $e.InnerText = $preIncludePath
+                $cl.AppendChild($e) | Out-Null
+                $changed = $true
+            } elseif ($cl.ForcedIncludeFiles -ne $preIncludePath) {
+                $cl.ForcedIncludeFiles = $preIncludePath
+                $changed = $true
+            }
         }
     }
-    if ($changed) { $xml.Save($vcx); Write-OK "  $([IO.Path]::GetFileName($vcx)) : ForcedIncludeFiles ajoute" }
-    else          { Write-OK "  $([IO.Path]::GetFileName($vcx)) : ForcedIncludeFiles deja present" }
+    if ($changed) { $xml.Save($vcx); Write-OK "  $([IO.Path]::GetFileName($vcx)) : ForcedIncludeFiles mis a jour -> $preIncludePath" }
+    else          { Write-OK "  $([IO.Path]::GetFileName($vcx)) : ForcedIncludeFiles deja correct" }
 }
 
 # 2-E : TRelaySvr/sshandler.cpp — for(DWORD i=0; ...) (C2065 'i' undeclared)

@@ -75,9 +75,9 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\NPGame;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;..\History Files;..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\NPGame;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;..\History Files;..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;TEST_MODE;KOREA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <MinimalRebuild>true</MinimalRebuild>
@@ -95,7 +95,7 @@
     <Link>
       <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLibd.lib;winmm.lib;Advapi32.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;Version.lib;dbghelp.lib;Psapi.lib;NPGameLib.lib;hackshield_stub.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)TClientd.exe</OutputFile>
-      <AdditionalLibraryDirectories>C:\4Story_3.5_Source\4s\Includes\DX\Lib;..\..\NPGame\MT;..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>Z:\\Includes\DX\Lib;C:\4Story_3.5_Source\4s\Includes\DX\Lib;..\..\NPGame\MT;..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)TClient.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -109,14 +109,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\NPGame;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;..\..\XTrap\client;..\History Files;..\TChart;..\..\APex\client;..\..\HShield\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\NPGame;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;..\..\XTrap\client;..\History Files;..\TChart;..\..\APex\client;..\..\HShield\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;KOREA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -132,7 +132,7 @@
     <Link>
       <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLib.lib;winmm.lib;Advapi32.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;Version.lib;dbghelp.lib;Psapi.lib;NPGameLib.lib;hackshield_stub.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)TClient.exe</OutputFile>
-      <AdditionalLibraryDirectories>C:\4Story_3.5_Source\4s\Includes\DX\Lib;..\..\NPGame\MT;..\TEngine\Lib;..\..\XTrap\client;..\..\APex\client;..\Patches;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>Z:\\Includes\DX\Lib;C:\4Story_3.5_Source\4s\Includes\DX\Lib;..\..\NPGame\MT;..\TEngine\Lib;..\..\XTrap\client;..\..\APex\client;..\Patches;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile />
       <StripPrivateSymbols />
@@ -150,11 +150,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test Release|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <OmitFramePointers>false</OmitFramePointers>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\NPGame;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;..\..\XTrap\client;..\History Files;..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\NPGame;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;..\..\XTrap\client;..\History Files;..\TChart;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;USE_PACKETSPY;TEST_MODE;KOREA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -170,7 +170,7 @@
     <Link>
       <AdditionalDependencies>D3d9.lib;D3dx9.lib;EngineLibTR.lib;winmm.lib;Imm32.lib;dsound.lib;dxguid.lib;strmiids.lib;Version.lib;dbghelp.lib;Psapi.lib;NPGameLib.lib;hackshield_stub.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)TClientTR.exe</OutputFile>
-      <AdditionalLibraryDirectories>C:\4Story_3.5_Source\4s\Includes\DX\Lib;..\..\NPGame\MT;..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>Z:\\Includes\DX\Lib;C:\4Story_3.5_Source\4s\Includes\DX\Lib;..\..\NPGame\MT;..\TEngine\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)TClientTR.pdb</ProgramDatabaseFile>
       <StripPrivateSymbols>$(IntDir)TClientTR_STRIPPED.pdb</StripPrivateSymbols>

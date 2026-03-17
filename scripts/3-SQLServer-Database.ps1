@@ -1,229 +1,177 @@
 # =============================================================================
 # 3-SQLServer-Database.ps1
-# 4Story - Installation SQL Server + Restauration des bases
-#
-#   1. Installation de SQL Server Express (instance FourStory) si absent
-#   2. Restauration de TGLOBAL_GSP et TGAME_GSP depuis les fichiers .bak
-#   3. Configuration du compte 'sa' (activation + mot de passe)
-#
-# PREREQUIS :
-#   - Fournir les fichiers .bak dans le dossier 'databases' a cote de ce script,
-#     OU modifier $BakDir ci-dessous pour pointer vers leur emplacement.
-#   - Fichiers attendus : tglobal_gsp.bak  et  tgame_gsp.bak
-#
-#   Si vous avez deja une installation fonctionnelle de 4Story 3.5, vous pouvez
-#   recopier les .bak depuis C:\databases\ (crees par les anciens scripts).
+# 4Story - Installation SQL Server 2022 Express + Restauration des bases
 # =============================================================================
 
 #Requires -RunAsAdministrator
 $ErrorActionPreference = "Stop"
 
-# --- CONFIGURATION - MODIFIER SI NECESSAIRE ---
+# --- CONFIGURATION ---
 $InstanceName = "FourStory"
-$SaPassword   = "Bonjour123!"    # Mot de passe du compte SQL 'sa'
+$SaPassword   = "ChangeThisStrongPassword!"   # change ca
 $GlobalDB     = "TGLOBAL_GSP"
 $GameDB       = "TGAME_GSP"
 
-# Dossier contenant les .bak
 $ScriptDir    = Split-Path -Parent $MyInvocation.MyCommand.Path
-$BakDir       = "$ScriptDir\..\databases"   # Cree un dossier 'databases' a cote de 'scripts'
-$DatabaseDir  = "C:\databases"              # Repertoire SQL Server pour les fichiers .mdf/.ldf
-
+$BakDir       = "$ScriptDir\..\databases"
+$DatabaseDir  = "C:\databases"
 $ServerConn   = ".\$InstanceName"
 
-# =============================================================================
-# Fonctions
-# =============================================================================
-function Write-Step {
-    param([int]$Num, [string]$Message)
+# ================= FONCTIONS =================
+function Write-Step { param($Num, $Message)
     Write-Host "`n============================================================" -ForegroundColor Yellow
     Write-Host "  Etape $Num : $Message" -ForegroundColor Yellow
     Write-Host "============================================================" -ForegroundColor Yellow
 }
-function Write-Info { param([string]$M) Write-Host "  [*] $M" -ForegroundColor Cyan   }
-function Write-OK   { param([string]$M) Write-Host "  [+] $M" -ForegroundColor Green  }
-function Write-Warn { param([string]$M) Write-Host "  [!] $M" -ForegroundColor Yellow }
-function Write-Err  { param([string]$M) Write-Host "  [-] $M" -ForegroundColor Red    }
 
-function Invoke-SqlCmd {
-    param([string]$Query, [string]$Database = "master", [switch]$NoError)
-    $args = @("-S", $ServerConn, "-U", "sa", "-P", $SaPassword, "-d", $Database, "-Q", $Query)
-    $result = & sqlcmd @args 2>&1
-    if ($LASTEXITCODE -ne 0 -and -not $NoError) {
-        throw "sqlcmd echec (code $LASTEXITCODE) : $result"
+function Write-Info { param($M) Write-Host "  [*] $M" -ForegroundColor Cyan }
+function Write-OK   { param($M) Write-Host "  [+] $M" -ForegroundColor Green }
+function Write-Warn { param($M) Write-Host "  [!] $M" -ForegroundColor Yellow }
+function Write-Err  { param($M) Write-Host "  [-] $M" -ForegroundColor Red }
+
+function Ensure-SqlServerModule {
+    if (-not (Get-Module -ListAvailable SqlServer)) {
+        Write-Info "Module 'SqlServer' absent - installation..."
+        # Forcer l'installation du provider NuGet en mode non-interactif
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser | Out-Null
+        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+        Install-Module SqlServer -Force -Scope CurrentUser -AllowClobber
     }
-    return $result
+    Import-Module SqlServer -Force
+    Write-OK "Module SqlServer pret"
 }
 
 function Test-SqlInstance {
-    param([string]$Name)
-    return ($null -ne (Get-Service -Name ("MSSQL`$$Name") -ErrorAction SilentlyContinue))
+    return (Get-Service "MSSQL`$$InstanceName" -ErrorAction SilentlyContinue)
 }
 
-function Find-Installer {
-    param([string]$Pattern)
-    foreach ($dir in @($ScriptDir, "$ScriptDir\..")) {
-        $f = Get-ChildItem $dir -Filter $Pattern -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($f) { return $f.FullName }
+# ================= TELECHARGEMENT VIA CURL =================
+function Get-FileOptimized {
+    param(
+        [string]$Url,
+        [string]$Destination
+    )
+
+    if (Test-Path $Destination) {
+        Write-Warn "Fichier existant detecte, suppression : $Destination"
+        Remove-Item $Destination -Force -ErrorAction Stop
     }
-    return $null
+
+    Write-Info "Telechargement via curl : $Url"
+    & curl.exe -L --progress-bar --fail -o $Destination $Url
+    if ($LASTEXITCODE -ne 0) { throw "curl a echoue (code $LASTEXITCODE)" }
+
+    Write-OK "Telechargement termine : $Destination"
 }
 
-# =============================================================================
-# DEBUT
-# =============================================================================
-Write-Host ""
-Write-Host "############################################################" -ForegroundColor Cyan
-Write-Host "#    4Story - Etape 3 : SQL Server + Bases de donnees     #" -ForegroundColor Cyan
-Write-Host "############################################################" -ForegroundColor Cyan
+# ================= INSTALL SQL 2022 EXPRESS =================
+function Install-Sql {
+    Write-Info "Telechargement et installation de SQL Server 2022 Express..."
+    $sqlUrl = "https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2064BIT/SQLEXPR_x64_ENU.exe"
+    $sqlExe = "$env:TEMP\SQLEXPR2022.exe"
+    Get-FileOptimized -Url $sqlUrl -Destination $sqlExe
 
-# =============================================================================
-# 1. SQL Server Express
-# =============================================================================
-Write-Step 1 "SQL Server Express (instance $InstanceName)"
-
-if (Test-SqlInstance -Name $InstanceName) {
-    Write-OK "Instance SQL '$InstanceName' deja presente."
-} else {
-    $installer = Find-Installer "SQLServer2017-SSEI-Expr.exe"
-    if (-not $installer) {
-        $installer = Find-Installer "SQLEXPR*.exe"
-    }
-    if (-not $installer) {
-        Write-Err "Installateur SQL Server introuvable."
-        Write-Warn "Telechargez SQL Server 2017 Express et placez l'EXE dans $ScriptDir ou son dossier parent."
-        exit 1
-    }
-    Write-Info "Installation depuis : $installer"
-    $proc = Start-Process -FilePath $installer `
-        -ArgumentList @("/Q", "/IACCEPTSQLSERVERLICENSETERMS", "/ACTION=Install",
-                        "/INSTANCENAME=$InstanceName", "/FEATURES=SQLEngine",
-                        "/SECURITYMODE=SQL", "/SAPWD=$SaPassword",
-                        "/TCPENABLED=1", "/BROWSERSVCSTARTUPTYPE=Automatic") `
-        -Wait -PassThru -NoNewWindow
-    if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne 3010) {
-        Write-Err "Installation SQL Server echouee (code $($proc.ExitCode))."
-        exit 1
-    }
-    Write-OK "SQL Server installe."
-
-    # Demarrer le service
-    Start-Service "MSSQL`$$InstanceName" -ErrorAction SilentlyContinue
-    Start-Sleep -Seconds 5
-}
-
-# Verifier que le service tourne
-$sqlSvc = Get-Service "MSSQL`$$InstanceName" -ErrorAction SilentlyContinue
-if (-not $sqlSvc) {
-    Write-Err "Service SQL Server MSSQL`$$InstanceName introuvable."
-    exit 1
-}
-if ($sqlSvc.Status -ne "Running") {
-    Write-Info "Demarrage du service SQL..."
+    $sqlArgs = @(
+        "/Q",
+        "/ACTION=Install",
+        "/FEATURES=SQLEngine",
+        "/INSTANCENAME=$InstanceName",
+        "/SECURITYMODE=SQL",
+        "/SAPWD=$SaPassword",
+        "/TCPENABLED=1",
+        "/IACCEPTSQLSERVERLICENSETERMS"
+    )
+    Start-Process $sqlExe -ArgumentList $sqlArgs -Wait -NoNewWindow
     Start-Service "MSSQL`$$InstanceName"
-    Start-Sleep -Seconds 5
+    Start-Sleep 5
+    Write-OK "SQL Server 2022 Express installe"
 }
-Write-OK "Service SQL : RUNNING"
 
-# =============================================================================
-# 2. Mot de passe SA
-# =============================================================================
-Write-Step 2 "Configuration du compte 'sa'"
-
-# Activer l'authentification mixte et le compte sa
-# Ces commandes utilisent d'abord l'auth Windows (ne necessite pas le mot de passe sa)
-$saScript = @"
-USE [master];
-ALTER LOGIN [sa] WITH PASSWORD = N'$SaPassword';
-ALTER LOGIN [sa] ENABLE;
+function Enable-MixedMode {
+    Write-Info "Activation du mode mixte et configuration du compte sa..."
+    $query = @"
+ALTER LOGIN [sa] WITH PASSWORD=N'$SaPassword', CHECK_POLICY=ON;
 EXEC sp_configure 'show advanced options', 1; RECONFIGURE;
 EXEC sp_configure 'user connections', 0; RECONFIGURE;
 "@
-try {
-    $r = & sqlcmd -S $ServerConn -E -Q $saScript 2>&1
-    Write-OK "Compte sa configure (auth Windows)."
-} catch {
-    Write-Warn "Configuration sa via auth Windows echouee - tentative via sa..."
+    Invoke-Sqlcmd -ServerInstance $ServerConn -Query $query -TrustServerCertificate -ErrorAction Stop
+
+    $regBase = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server" |
+                   Where-Object { $_.PSChildName -match "^MSSQL\d+\.$InstanceName$" } |
+                   Select-Object -First 1 -ExpandProperty PSPath
+    $regPath = "$regBase\MSSQLServer"
+    if (Test-Path $regPath) {
+        Set-ItemProperty -Path $regPath -Name "LoginMode" -Value 2 -Type DWord -Force
+        Restart-Service "MSSQL`$$InstanceName" -Force
+        Start-Sleep 8
+        Write-OK "Mode mixte active et service redemarre"
+    }
 }
 
-# Activer l'authentification SQL Server (mode mixte) via registre
-$regPath = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL14.$InstanceName\MSSQLServer"
-if (Test-Path $regPath) {
-    Set-ItemProperty -Path $regPath -Name "LoginMode" -Value 2 -Type DWord -Force
-    Write-OK "Mode mixte (SQL + Windows) active."
-    # Redemarrer pour appliquer
-    Restart-Service "MSSQL`$$InstanceName" -Force
-    Start-Sleep -Seconds 8
-    Write-OK "Service SQL redémarre."
+function Restore-Database {
+    param([string]$Name, [string]$BakFile, [string]$LogicalData, [string]$LogicalLog)
+
+    $bak = Join-Path $BakDir $BakFile
+    if (-not (Test-Path $bak)) {
+        Write-Warn "Fichier .bak introuvable : $BakFile"
+        return
+    }
+
+    New-Item -ItemType Directory -Path $DatabaseDir -Force | Out-Null
+    $targetBak = Join-Path $DatabaseDir $BakFile
+    Copy-Item $bak $targetBak -Force
+
+    $mdf = "$DatabaseDir\$Name.mdf"
+    $ldf = "$DatabaseDir\$Name`_log.ldf"
+
+    Write-Info "Restauration de $Name..."
+    $query = @"
+IF EXISTS (SELECT * FROM sys.databases WHERE name = '$Name')
+BEGIN
+    ALTER DATABASE [$Name] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE [$Name];
+END
+RESTORE DATABASE [$Name]
+FROM DISK = '$targetBak'
+WITH MOVE '$LogicalData' TO '$mdf',
+     MOVE '$LogicalLog'  TO '$ldf',
+     REPLACE;
+"@
+    Invoke-Sqlcmd -ServerInstance $ServerConn -Username "sa" -Password $SaPassword -Query $query -TrustServerCertificate -ErrorAction Stop
+    Write-OK "Base $Name restauree"
 }
 
-# =============================================================================
-# 3. Restauration des bases
-# =============================================================================
-Write-Step 3 "Restauration des bases de donnees"
+# ================= EXECUTION =================
+Write-Host ""
+Write-Host "############################################################" -ForegroundColor Cyan
+Write-Host "#    4Story - Etape 3 : SQL Server 2022 Express + Bases   #" -ForegroundColor Cyan
+Write-Host "############################################################" -ForegroundColor Cyan
 
-New-Item -ItemType Directory -Path $DatabaseDir -Force | Out-Null
+Write-Step 1 "Preparation module SqlServer"
+Ensure-SqlServerModule
 
-# Noms logiques reels dans les .bak (verifies avec RESTORE FILELISTONLY)
+Write-Step 2 "SQL Server Express (instance $InstanceName)"
+if (-not (Test-SqlInstance)) {
+    Install-Sql
+} else {
+    Write-OK "Instance SQL '$InstanceName' deja presente"
+}
+
+Write-Step 3 "Configuration compte sa et mode mixte"
+Enable-MixedMode
+
+Write-Step 4 "Restauration des bases"
 $databases = @(
-    @{ Name = $GlobalDB; BakFile = "tglobal_gsp.bak"; LogicalData = "TGLOBAL_Data"; LogicalLog = "TGLOBAL_Log" },
-    @{ Name = $GameDB;   BakFile = "tgame_gsp.bak";   LogicalData = "TGAME_Data";   LogicalLog = "TGAME_Log"   }
+    @{ Name=$GlobalDB; BakFile="tglobal_gsp.bak"; LogicalData="TGLOBAL_Data"; LogicalLog="TGLOBAL_Log" },
+    @{ Name=$GameDB;   BakFile="tgame_gsp.bak";   LogicalData="TGAME_Data";   LogicalLog="TGAME_Log" }
 )
 
 foreach ($db in $databases) {
-    $bakSrc = $null
-
-    # Chercher le .bak dans le dossier du projet
-    foreach ($dir in @($BakDir, $ScriptDir, "$ScriptDir\..", $DatabaseDir)) {
-        $candidate = Join-Path $dir $db.BakFile
-        if (Test-Path $candidate) { $bakSrc = $candidate; break }
-    }
-
-    if (-not $bakSrc) {
-        Write-Warn "Fichier .bak introuvable : $($db.BakFile)"
-        Write-Warn "Placez-le dans : $BakDir"
-        continue
-    }
-
-    # Le service SQL Server n'a pas acces a C:\Users\...
-    # On copie le .bak dans $DatabaseDir (accessible par SQL Server)
-    $bakPath = Join-Path $DatabaseDir $db.BakFile
-    if ($bakSrc -ne $bakPath) {
-        Write-Info "Copie de $($db.BakFile) vers $DatabaseDir (droits SQL Server)..."
-        Copy-Item $bakSrc $bakPath -Force
-    }
-
-    Write-Info "Restauration de $($db.Name) depuis $bakPath ..."
-
-    $mdfPath = "$DatabaseDir\$($db.Name).mdf"
-    $ldfPath = "$DatabaseDir\$($db.Name)_log.ldf"
-
-    $restoreQuery = @"
-USE [master];
-IF EXISTS (SELECT name FROM sys.databases WHERE name = N'$($db.Name)')
-BEGIN
-    ALTER DATABASE [$($db.Name)] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE [$($db.Name)];
-END
-RESTORE DATABASE [$($db.Name)]
-    FROM DISK = N'$bakPath'
-    WITH MOVE N'$($db.LogicalData)' TO N'$mdfPath',
-         MOVE N'$($db.LogicalLog)'  TO N'$ldfPath',
-         REPLACE, STATS = 10;
-"@
-    try {
-        $result = & sqlcmd -S $ServerConn -U sa -P $SaPassword -Q $restoreQuery 2>&1
-        if ($LASTEXITCODE -ne 0) { throw $result }
-        Write-OK "Base $($db.Name) restauree."
-    } catch {
-        Write-Err "Echec restauration $($db.Name) : $_"
-        Write-Warn "Verifiez que le fichier .bak est valide et compatible avec SQL Server 2017."
-    }
+    Restore-Database $db.Name $db.BakFile $db.LogicalData $db.LogicalLog
 }
 
-# =============================================================================
-# RESUME FINAL
-# =============================================================================
+# ================= RESUME FINAL =================
 Write-Host ""
 Write-Host "############################################################" -ForegroundColor Green
 Write-Host "#               ETAPE 3 TERMINEE                          #" -ForegroundColor Green

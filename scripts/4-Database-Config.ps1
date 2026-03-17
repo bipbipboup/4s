@@ -15,14 +15,16 @@ $ErrorActionPreference = "Stop"
 
 # --- CONFIGURATION ---
 $InstanceName = "FourStory"
-$SaPassword   = "Bonjour123!"
+$SaPassword   = "ChangeThisStrongPassword!"
 $GlobalDB     = "TGLOBAL_GSP"
 $GameDB       = "TGAME_GSP"
 $GameDSN      = "TGAME_GSP"
 $ServerConn   = ".\$InstanceName"
 
-# IP vue par les clients (127.0.0.1 pour test local, IP reelle pour acces externe)
-$ServerIP     = "127.0.0.1"
+# IP vue par les clients - doit etre l'IP reseau du serveur, pas 127.0.0.1
+$ServerIP     = (Get-NetIPAddress -AddressFamily IPv4 |
+                 Where-Object { $_.InterfaceAlias -notlike "*Loopback*" -and $_.PrefixOrigin -ne "WellKnown" } |
+                 Select-Object -First 1).IPAddress
 $MachineName  = $env:COMPUTERNAME
 
 $TestLogin    = "admin"
@@ -44,9 +46,8 @@ function Write-Err  { param([string]$M) Write-Host "  [-] $M" -ForegroundColor R
 
 function Invoke-Sql {
     param([string]$Query, [string]$DB = "master")
-    $result = & sqlcmd -S $ServerConn -U sa -P $SaPassword -d $DB -Q $Query 2>&1
-    if ($LASTEXITCODE -ne 0) { throw "sqlcmd echec : $result" }
-    return $result
+    Invoke-Sqlcmd -ServerInstance $ServerConn -Username sa -Password $SaPassword `
+                  -Database $DB -Query $Query -TrustServerCertificate -ErrorAction Stop
 }
 
 # =============================================================================
@@ -66,9 +67,10 @@ try {
 }
 
 foreach ($db in @($GlobalDB, $GameDB)) {
-    $r = & sqlcmd -S $ServerConn -U sa -P $SaPassword -Q "SELECT name FROM sys.databases WHERE name='$db'" 2>&1
-    if ($r -match $db) { Write-OK "Base $db : presente" }
-    else               { Write-Err "Base $db introuvable - executez d'abord 3-SQLServer-Database.ps1" ; exit 1 }
+    $r = Invoke-Sqlcmd -ServerInstance $ServerConn -Username sa -Password $SaPassword `
+                       -TrustServerCertificate -Query "SELECT name FROM sys.databases WHERE name='$db'"
+    if ($r.name -eq $db) { Write-OK "Base $db : presente" }
+    else                 { Write-Err "Base $db introuvable - executez d'abord 3-SQLServer-Database.ps1" ; exit 1 }
 }
 
 # =============================================================================
@@ -78,7 +80,7 @@ Write-Step 1 "TGLOBAL_GSP.TMACHINE"
 
 Invoke-Sql -DB $GlobalDB -Query "UPDATE TMACHINE SET szNAME='$MachineName' WHERE bMachineID=1;"
 $r = Invoke-Sql -DB $GlobalDB -Query "SELECT bMachineID, szNAME FROM TMACHINE;"
-Write-Host $r
+$r | Format-Table -AutoSize | Out-String | Write-Host
 Write-OK "TMACHINE bMachineID=1 -> '$MachineName'"
 
 # =============================================================================
@@ -88,7 +90,7 @@ Write-Step 2 "TGLOBAL_GSP.TGROUP"
 
 Invoke-Sql -DB $GlobalDB -Query "UPDATE TGROUP SET szDSN='$GameDSN', szUserID='sa', szPasswd='$SaPassword' WHERE bGroupID=1;"
 $r = Invoke-Sql -DB $GlobalDB -Query "SELECT bGroupID, szNAME, szDSN, szUserID FROM TGROUP;"
-Write-Host $r
+$r | Format-Table -AutoSize | Out-String | Write-Host
 Write-OK "TGROUP bGroupID=1 : DSN=$GameDSN, user=sa"
 
 # =============================================================================
@@ -100,7 +102,7 @@ Write-Step 3 "TGLOBAL_GSP.TIPADDR"
 
 Invoke-Sql -DB $GlobalDB -Query "UPDATE TIPADDR SET szIPAddr='$ServerIP', szPriAddr='127.0.0.1', bActive=1 WHERE bMachineID=1;"
 $r = Invoke-Sql -DB $GlobalDB -Query "SELECT bMachineID, szIPAddr, szPriAddr, bActive FROM TIPADDR;"
-Write-Host $r
+$r | Format-Table -AutoSize | Out-String | Write-Host
 Write-OK "TIPADDR bMachineID=1 -> szIPAddr=$ServerIP"
 
 # =============================================================================
@@ -109,8 +111,10 @@ Write-OK "TIPADDR bMachineID=1 -> szIPAddr=$ServerIP"
 # =============================================================================
 Write-Step 4 "TGLOBAL_GSP.TACCOUNT (compte de test)"
 
-$r = & sqlcmd -S $ServerConn -U sa -P $SaPassword -d $GlobalDB -Q "SELECT szUserID FROM TACCOUNT WHERE szUserID='$TestLogin'" 2>&1
-if ($r -match $TestLogin) {
+$r = Invoke-Sqlcmd -ServerInstance $ServerConn -Username sa -Password $SaPassword `
+                   -Database $GlobalDB -TrustServerCertificate `
+                   -Query "SELECT szUserID FROM TACCOUNT WHERE szUserID='$TestLogin'"
+if ($r.szUserID -eq $TestLogin) {
     Invoke-Sql -DB $GlobalDB -Query "UPDATE TACCOUNT SET szPasswd='$TestPassMD5', bCheck=0 WHERE szUserID='$TestLogin';"
     Write-OK "TACCOUNT '$TestLogin' : mot de passe mis a jour"
 } else {
@@ -118,7 +122,7 @@ if ($r -match $TestLogin) {
     Write-OK "TACCOUNT '$TestLogin' : cree (MD5='$TestPassMD5')"
 }
 $r = Invoke-Sql -DB $GlobalDB -Query "SELECT TOP 5 dwUserID, szUserID, szPasswd FROM TACCOUNT;"
-Write-Host $r
+$r | Format-Table -AutoSize | Out-String | Write-Host
 
 # =============================================================================
 # RESUME FINAL

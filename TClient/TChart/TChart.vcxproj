@@ -53,9 +53,9 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -70,8 +70,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\..\TProtocol;..\TEngine\TachyonControl;..\TEngine\Engine Lib;..\TEngine\TComp;..\TEngine\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>

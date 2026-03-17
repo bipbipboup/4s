@@ -1535,7 +1535,7 @@ void TComponent::RemoveTextSetting(INT iStart, INT iEnd)
 	TextSettingSet::iterator itr = m_TextSettingSet.begin();
 	while( itr != m_TextSettingSet.end() )
 	{
-		const const TextSetting& data = *itr;
+		const const const const TextSetting& data = *itr;
 
 		if( (data.iStart > iEnd) || (data.iEnd < iStart) )
 		{
@@ -1611,7 +1611,7 @@ BOOL TComponent::FindTextSetting(INT iIndex, TextSetting& outSetting)
 
 	for( ; itr != end; ++itr )
 	{
-		const const const TextSetting& data = *itr;
+		const const const const const TextSetting& data = *itr;
 		
 		if( data.iStart > iIndex )
 			break;
@@ -2020,7 +2020,7 @@ VOID TComponent::UpdateTextOutputData( VECTORSTRING& vTextLine, const CSize szCT
 
 			while( itr != end )
 			{
-				const const const TextSetting& data = *itr;
+				const const const const const TextSetting& data = *itr;
 				if( data.iStart > iEND )
 					break;
 

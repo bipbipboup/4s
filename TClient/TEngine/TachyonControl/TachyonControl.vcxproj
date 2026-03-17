@@ -58,9 +58,9 @@
       <MkTypLibCompatible>false</MkTypLibCompatible>
     </Midl>
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;__TUIS_IMPL__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -77,11 +77,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <ForcedIncludeFiles>C:\4Story_3.5_Source\4s\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Z:\TClient\4s_client_pre_include.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Z:\\TClient\Patches;Z:\\Includes\DX\Include;C:\4Story_3.5_Source\4s\TClient\Patches;C:\4Story_3.5_Source\4s\Includes\DX\Include;..\TachyonControl;..\Engine Lib;..\TComp;..\TCML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
